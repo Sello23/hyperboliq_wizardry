@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hyperboliq/widgets/search_text_bar.dart';
 import 'models/spell_model.dart';
-import 'widgets/search_bar.dart';
 
 void main() {
   runApp(const MyApp());
