@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hyperboliq/features/houses/widgets/house_heads.dart';
+import 'package:hyperboliq/features/houses/widgets/house_traits.dart';
 import 'package:hyperboliq/shared/extensions.dart';
 import 'package:hyperboliq/shared/widgets/house_content.dart';
 
@@ -17,97 +19,155 @@ class HouseScreen extends StatelessWidget {
       builder: (context, constraints) {
         final colors = Theme.of(context).colorScheme;
         double headerHeight = constraints.maxWidth > 500 ? 300 : 400;
+
+        final TextStyle commonTextStyle = context.bodyLarge!.copyWith(
+          color: colors.onSurface,
+          fontSize: 15,
+        );
+
+        const TextAlign commonTextAlign = TextAlign.start;
+
         return DefaultTabController(
           length: 2,
           child: Scaffold(
             appBar: AppBar(
               leading: BackButton(
-                onPressed: () => GoRouter.of(context).go('/houses'),
+                onPressed: () => GoRouter.of(context).go('/'),
               ),
               title: Text('HOUSE - ${house.name}'),
-              bottom: PreferredSize(
-                preferredSize: Size.fromHeight(kToolbarHeight + headerHeight),
-                child: Column(
-                  children: [
-                    HouseContent(
-                      child: Builder(
-                        builder: (context) {
-                          if (constraints.maxWidth > 500) {
-                            return SizedBox(
-                              height: headerHeight,
-                              child: Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  ClippedImage(
-                                    house.houseBackgroundImage.image,
-                                    fit: BoxFit.cover,
-                                  ),
-                                  Expanded(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(12),
-                                      child: Text(
-                                        house.animal,
-                                        style: context.bodyLarge!.copyWith(
-                                          color: colors.onSurface,
-                                          fontSize: 16,
-                                        ),
-                                        textAlign: TextAlign.justify,
-                                      ),
-                                    ),
-                                  ),
-                                ],
+            ),
+            body: Column(
+              children: [
+                // Header section
+                SizedBox(
+                  height: headerHeight,
+                  child: HouseContent(
+                    child: Builder(
+                      builder: (context) {
+                        if (constraints.maxWidth > 500) {
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              ClippedImage(
+                                house.houseBackgroundImage.image,
+                                fit: BoxFit.cover,
                               ),
-                            );
-                          }
-                          return SizedBox(
-                            height: headerHeight,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                SizedBox(
-                                  height: 300,
-                                  child: ClippedImage(
-                                    house.houseBackgroundImage.image,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(12),
-                                    child: Text(
-                                      house.houseBackgroundImage.image,
-                                      style: context.bodyLarge!.copyWith(
-                                        color: colors.onSurface,
-                                        fontSize: 16,
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 30.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        house.houseColours,
+                                        style: commonTextStyle,
+                                        textAlign: commonTextAlign,
                                       ),
-                                      textAlign: TextAlign.justify,
-                                    ),
+                                      Text(
+                                        house.animal,
+                                        style: commonTextStyle,
+                                        textAlign: commonTextAlign,
+                                      ),
+                                      Text(
+                                        house.element,
+                                        style: commonTextStyle,
+                                        textAlign: commonTextAlign,
+                                      ),
+                                      Text(
+                                        house.ghost,
+                                        style: commonTextStyle,
+                                        textAlign: commonTextAlign,
+                                      ),
+                                      Text(
+                                        house.commonRoom,
+                                        style: commonTextStyle,
+                                        textAlign: commonTextAlign,
+                                      ),
+                                    ],
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           );
-                        },
-                      ),
+                        }
+                        return Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              height: 300,
+                              child: ClippedImage(
+                                house.houseBackgroundImage.image,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 35.0, top: 20.0),
+                              child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          house.houseColours,
+                                          style: commonTextStyle,
+                                          textAlign: commonTextAlign,
+                                        ),
+                                        Text(
+                                          house.animal,
+                                          style: commonTextStyle,
+                                          textAlign: commonTextAlign,
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(width: 15.0),
+                                    // Adds 16 pixels of space between the columns
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          house.element,
+                                          style: commonTextStyle,
+                                          textAlign: commonTextAlign,
+                                        ),
+                                        Text(
+                                          house.ghost,
+                                          style: commonTextStyle,
+                                          textAlign: commonTextAlign,
+                                        ),
+                                      ],
+                                    )
+                                  ]),
+                            )
+                          ],
+                        );
+                      },
                     ),
-                    const TabBar(
-                      tabs: [
-                        Tab(text: 'Heads'),
-                        Tab(text: 'Traits'),
-                      ],
-                    ),
+                  ),
+                ),
+
+                // TabBar section
+                const TabBar(
+                  tabs: [
+                    Tab(text: 'Heads'),
+                    Tab(text: 'Traits'),
                   ],
                 ),
-              ),
-            ),
-            body: const TabBarView(
-              children: [
-                SingleChildScrollView(child: null),
-                SingleChildScrollView(child: null),
+
+                // TabBarView section
+                Expanded(
+                  child: TabBarView(
+                    children: [
+                      SingleChildScrollView(child: HouseHeads(house: house)),
+                      SingleChildScrollView(child: HouseTraits(house: house)),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),

@@ -13,7 +13,6 @@ class HouseCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Song nowPlaying = artist.songs[Random().nextInt(artist.songs.length)];
 
     return OutlinedCard(
       child: LayoutBuilder(

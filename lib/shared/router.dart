@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hyperboliq/features/houses/widgets/houses_screen.dart';
 import 'package:hyperboliq/shared/app_strings.dart';
 import 'package:hyperboliq/shared/providers/houses.dart';
 
@@ -20,7 +19,6 @@ final artistsProvider = ArtistsProvider();
 final playlistsProvider = PlaylistsProvider();
 final housesProvider = HousesProvider();
 
-
 const List<NavigationDestination> destinations = [
   NavigationDestination(
     label: AppStrings.houseOverview,
@@ -30,12 +28,12 @@ const List<NavigationDestination> destinations = [
   NavigationDestination(
     label: AppStrings.spellsLibrary,
     icon: Icon(Icons.flash_on),
-    route: '/playlists',
+    route: '/spells',
   ),
   NavigationDestination(
     label: AppStrings.elixirsEncyclopedia,
     icon: Icon(Icons.science),
-    route: '/artists',
+    route: '/elixirs',
   ),
 ];
 
@@ -68,110 +66,22 @@ final appRouter = GoRouter(
       ),
     ),
 
-    // PlaylistHomeScreen
-    GoRoute(
-      path: '/playlists',
-      pageBuilder: (context, state) => const MaterialPage<void>(
-        key: _pageKey,
-        child: RootLayout(
-          key: _scaffoldKey,
-          currentIndex: 1,
-          child: PlaylistHomeScreen(),
-        ),
-      ),
-      routes: [
-        GoRoute(
-          path: ':pid',
-          pageBuilder: (context, state) => MaterialPage<void>(
-            key: state.pageKey,
-            child: RootLayout(
-              key: _scaffoldKey,
-              currentIndex: 1,
-              child: PlaylistScreen(
-                playlist: playlistsProvider
-                    .getPlaylist(state.pathParameters['pid']!)!,
-              ),
-            ),
-          ),
-        ),
-      ],
-    ),
-
-
     //HousesHomeScreen
     GoRoute(
-      path: '/houses',
-      pageBuilder: (context, state) => const MaterialPage<void>(
-        key: _pageKey,
+      path: '/houses/:id',
+      pageBuilder: (context, state) => MaterialPage<void>(
+        key: state.pageKey,
         child: RootLayout(
           key: _scaffoldKey,
-          currentIndex: 2,
-          child: HousesScreen(),
+          currentIndex: 0,
+          child: HouseScreen(
+            house: housesProvider.getHouse(state.pathParameters['id']!)!,
+          ),
         ),
       ),
-      routes: [
-        GoRoute(
-          path: ':hid',
-          pageBuilder: (context, state) => MaterialPage<void>(
-            key: state.pageKey,
-            child: RootLayout(
-              key: _scaffoldKey,
-              currentIndex: 2,
-              child: HouseScreen(
-                house:
-                housesProvider.getHouse(state.pathParameters['hid']!)!,
-              ),
-            ),
-          ),
-          // builder: (context, state) => ArtistScreen(
-          //   id: state.params['aid']!,
-          // ),
-        ),
-      ],
+      // builder: (context, state) => ArtistScreen(
+      //   id: state.params['aid']!,
+      // ),
     ),
-
-    // ArtistHomeScreen
-    GoRoute(
-      path: '/artists',
-      pageBuilder: (context, state) => const MaterialPage<void>(
-        key: _pageKey,
-        child: RootLayout(
-          key: _scaffoldKey,
-          currentIndex: 3,
-          child: ArtistsScreen(),
-        ),
-      ),
-      routes: [
-        GoRoute(
-          path: ':aid',
-          pageBuilder: (context, state) => MaterialPage<void>(
-            key: state.pageKey,
-            child: RootLayout(
-              key: _scaffoldKey,
-              currentIndex: 2,
-              child: ArtistScreen(
-                artist:
-                    artistsProvider.getArtist(state.pathParameters['aid']!)!,
-              ),
-            ),
-          ),
-          // builder: (context, state) => ArtistScreen(
-          //   id: state.params['aid']!,
-          // ),
-        ),
-      ],
-    ),
-    for (final route in destinations.skip(3))
-      GoRoute(
-        path: route.route,
-        pageBuilder: (context, state) => MaterialPage<void>(
-          key: _pageKey,
-          child: RootLayout(
-            key: _scaffoldKey,
-            currentIndex: destinations.indexOf(route),
-            child: const SizedBox(),
-          ),
-        ),
-      ),
   ],
 );

@@ -6,7 +6,6 @@ import 'package:universal_platform/universal_platform.dart';
 import '../playback/bloc/bloc.dart';
 import '../router.dart' as router;
 import 'adaptive_navigation.dart';
-import 'widget_exports.dart';
 
 class RootLayout extends StatelessWidget {
   const RootLayout({
@@ -31,7 +30,6 @@ class RootLayout extends StatelessWidget {
           go.GoRouter.of(context).go(destination.route);
         }
 
-        final current = state.songWithProgress;
         return AdaptiveNavigation(
           key: _navigationRailKey,
           destinations: router.destinations
@@ -50,7 +48,6 @@ class RootLayout extends StatelessWidget {
                   child: child,
                 ),
               ),
-              if (current != null) const BottomBar(),
             ],
           ),
         );
