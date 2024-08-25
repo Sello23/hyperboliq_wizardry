@@ -1,5 +1,5 @@
-class HouseBackgroundImage {
-  const HouseBackgroundImage(
+class MyImage {
+  const MyImage(
       {required this.image,
         required this.sourceName});
 

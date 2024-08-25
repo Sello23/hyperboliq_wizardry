@@ -15,7 +15,7 @@ class HousesHighlight extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: Image.asset(
-                    'assets/images/news/wizard_home.jpeg',
+                    'assets/images/houses/wizard_home.jpg',
                     fit: BoxFit.cover,
                   ),
                 ),

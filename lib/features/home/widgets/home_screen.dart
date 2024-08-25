@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:adaptive_components/adaptive_components.dart';
 import 'package:hyperboliq/shared/app_strings.dart';
 import 'package:hyperboliq/shared/models/house/house.dart';
-import 'package:hyperboliq/shared/providers/houses.dart';
 
 import '../../../shared/extensions.dart';
+import '../../../shared/providers/houses_provider.dart';
 import '../../../shared/widgets/widget_exports.dart';
 import 'widget_exports.dart';
 

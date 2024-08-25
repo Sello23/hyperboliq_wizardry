@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hyperboliq/features/spells/spells_screen.dart';
 import 'package:hyperboliq/shared/app_strings.dart';
-import 'package:hyperboliq/shared/providers/houses.dart';
+import 'package:hyperboliq/shared/providers/houses_provider.dart';
 
 import '../features/home/home.dart';
 import '../features/houses/widgets/house_screen.dart';
@@ -58,18 +59,18 @@ final appRouter = GoRouter(
       ),
     ),
 
-    //Spells
-    // GoRoute(
-    //   path: '/spells/',
-    //   pageBuilder: (context, state) => const MaterialPage<void>(
-    //     key: _pageKey,
-    //     child: RootLayout(
-    //       key: _scaffoldKey,
-    //       currentIndex: 0,
-    //       child: SpellsScreen(),
-    //     ),
-    //   ),
-    // ),
+    // Spells
+    GoRoute(
+      path: '/spells',
+      pageBuilder: (context, state) => const MaterialPage<void>(
+        key: _pageKey,
+        child: RootLayout(
+          key: _scaffoldKey,
+          currentIndex: 1,
+          child: SpellsScreen(),
+        ),
+      ),
+    ),
 
     //HousesHomeScreen
     GoRoute(
@@ -84,9 +85,6 @@ final appRouter = GoRouter(
           ),
         ),
       ),
-      // builder: (context, state) => ArtistScreen(
-      //   id: state.params['aid']!,
-      // ),
     ),
   ],
 );

@@ -1,7 +1,7 @@
 import 'package:hyperboliq/shared/models/house/trait.dart';
 
 import 'head.dart';
-import 'house_background_image.dart';
+import '../my_image.dart';
 
 class House {
   final String id;
@@ -14,7 +14,7 @@ class House {
   final String commonRoom;
   final List<Head> heads;
   final List<Trait> traits;
-  final HouseBackgroundImage houseBackgroundImage;
+  final MyImage houseBackgroundImage;
 
   House({
     required this.id,

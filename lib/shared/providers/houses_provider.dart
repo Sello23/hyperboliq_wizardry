@@ -2,8 +2,8 @@ import 'package:collection/collection.dart';
 import 'package:hyperboliq/shared/models/house/house.dart';
 
 import '../models/house/head.dart';
-import '../models/house/house_background_image.dart';
 import '../models/house/trait.dart';
+import '../models/my_image.dart';
 
 class HousesProvider {
   static HousesProvider get shared => HousesProvider();
@@ -18,7 +18,7 @@ class HousesProvider {
             element: 'Fire',
             ghost: 'Nearly-Headless Nick',
             commonRoom: 'Gryffindor Tower',
-            houseBackgroundImage: const HouseBackgroundImage(
+            houseBackgroundImage: const MyImage(
               image: 'assets/images/houses/gryffindor_background.jpg',
               sourceName: 'Gryffindor',
             ),
@@ -55,7 +55,7 @@ class HousesProvider {
           element: 'Air',
           ghost: 'Grey Lady',
           commonRoom: 'Ravenclaw Tower',
-          houseBackgroundImage: const HouseBackgroundImage(
+          houseBackgroundImage: const MyImage(
             image: 'assets/images/houses/ravenclaw_background.jpg',
             sourceName: 'Ravenclaw',
           ),
@@ -107,7 +107,7 @@ class HousesProvider {
           element: 'Earth',
           ghost: 'Fat Friar',
           commonRoom: 'Hufflepuff Basement',
-          houseBackgroundImage: const HouseBackgroundImage(
+          houseBackgroundImage: const MyImage(
             image: 'assets/images/houses/hufflepuff_background.jpg',
             sourceName: 'Hufflepuff',
           ),
@@ -159,7 +159,7 @@ class HousesProvider {
           element: 'Water',
           ghost: 'Bloody Baron',
           commonRoom: 'Slytherin Dungeon',
-          houseBackgroundImage: const HouseBackgroundImage(
+          houseBackgroundImage: const MyImage(
             image: 'assets/images/houses/slytherin_background.jpg',
             sourceName: 'Slytherin',
           ),

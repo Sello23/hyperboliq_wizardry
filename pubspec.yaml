@@ -98,7 +98,5 @@ flutter:
     assets:
       - assets/images/
       - assets/images/playlists/
-      - assets/images/albums/
-      - assets/images/artists/
-      - assets/images/news/
       - assets/images/houses/
+      - assets/images/spells/
