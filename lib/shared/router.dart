@@ -3,11 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:hyperboliq/shared/app_strings.dart';
 import 'package:hyperboliq/shared/providers/houses.dart';
 
-import '../features/artists/artists.dart';
 import '../features/home/home.dart';
 import '../features/houses/widgets/house_screen.dart';
-import '../features/playlists/playlists.dart';
-import '../features/playlists/widgets/widgets_exports.dart';
 import 'providers/artists.dart';
 import 'providers/playlists.dart';
 import 'widgets/widget_exports.dart';
