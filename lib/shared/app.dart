@@ -1,12 +1,9 @@
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hyperboliq/shared/app_strings.dart';
 
-import 'playback/bloc/bloc.dart';
 import 'providers/theme.dart';
 import 'router.dart';
-import 'widgets/widget_exports.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -20,42 +17,37 @@ class _MyAppState extends State<MyApp> {
     sourceColor: Colors.pink,
     themeMode: ThemeMode.system,
   ));
+
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<PlaybackBloc>(
-      create: (context) => PlaybackBloc(),
-      child: DynamicColorBuilder(
-        builder: (lightDynamic, darkDynamic) => ThemeProvider(
-            lightDynamic: lightDynamic,
-            darkDynamic: darkDynamic,
-            settings: settings,
-            child: NotificationListener<ThemeSettingChange>(
-              onNotification: (notification) {
-                settings.value = notification.settings;
-                return true;
+    //Use your bloc provider here
+    return DynamicColorBuilder(
+      builder: (lightDynamic, darkDynamic) => ThemeProvider(
+          lightDynamic: lightDynamic,
+          darkDynamic: darkDynamic,
+          settings: settings,
+          child: NotificationListener<ThemeSettingChange>(
+            onNotification: (notification) {
+              settings.value = notification.settings;
+              return true;
+            },
+            child: ValueListenableBuilder<ThemeSettings>(
+              valueListenable: settings,
+              builder: (context, value, _) {
+                final theme = ThemeProvider.of(context);
+                return MaterialApp.router(
+                  debugShowCheckedModeBanner: false,
+                  title: AppStrings.appName,
+                  theme: theme.light(settings.value.sourceColor),
+                  darkTheme: theme.dark(settings.value.sourceColor),
+                  themeMode: theme.themeMode(),
+                  routeInformationParser: appRouter.routeInformationParser,
+                  routeInformationProvider: appRouter.routeInformationProvider,
+                  routerDelegate: appRouter.routerDelegate,
+                );
               },
-              child: ValueListenableBuilder<ThemeSettings>(
-                valueListenable: settings,
-                builder: (context, value, _) {
-                  final theme = ThemeProvider.of(context);
-                  return MaterialApp.router(
-                    debugShowCheckedModeBanner: false,
-                    title: AppStrings.appName,
-                    theme: theme.light(settings.value.sourceColor),
-                    darkTheme: theme.dark(settings.value.sourceColor),
-                    themeMode: theme.themeMode(),
-                    routeInformationParser: appRouter.routeInformationParser,
-                    routeInformationProvider:
-                    appRouter.routeInformationProvider,
-                    routerDelegate: appRouter.routerDelegate,
-                    builder: (context, child) {
-                      return PlayPauseListener(child: child!);
-                    },
-                  );
-                },
-              ),
-            )),
-      ),
+            ),
+          )),
     );
   }
 }

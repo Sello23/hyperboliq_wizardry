@@ -5,11 +5,8 @@ import 'package:hyperboliq/shared/app_strings.dart';
 import 'package:hyperboliq/shared/models/house/house.dart';
 import 'package:hyperboliq/shared/providers/houses.dart';
 
-import '../../../shared/models/models_exports.dart';
 import '../../../shared/extensions.dart';
-import '../../../shared/providers/providers_imports.dart';
 import '../../../shared/widgets/widget_exports.dart';
-import '../../playlists/widgets/playlist_songs.dart';
 import 'widget_exports.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -22,11 +19,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    final PlaylistsProvider playlistProvider = PlaylistsProvider();
-    final List<Playlist> playlists = playlistProvider.playlists;
-    final Playlist topSongs = playlistProvider.topSongs;
-    final Playlist newReleases = playlistProvider.newReleases;
-
     final HousesProvider housesProvider = HousesProvider();
     final List<House> houses = housesProvider.houses;
 
@@ -63,18 +55,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ],
                       ),
-                    ),
-                    HomeRecent(
-                      playlists: playlists,
-                      axis: Axis.vertical,
-                    ),
-                    PlaylistSongs(
-                      playlist: topSongs,
-                      constraints: constraints,
-                    ),
-                    PlaylistSongs(
-                      playlist: newReleases,
-                      constraints: constraints,
                     ),
                   ],
                 ),
@@ -134,9 +114,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           style: context.headlineSmall,
                         ),
                       ),
-                      HomeRecent(
-                        playlists: playlists,
-                      ),
                     ],
                   ),
                 ),
@@ -161,13 +138,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                   style: context.titleLarge,
                                 ),
                               ),
-                              LayoutBuilder(
-                                builder: (context, constraints) =>
-                                    PlaylistSongs(
-                                  playlist: topSongs,
-                                  constraints: constraints,
-                                ),
-                              ),
                             ],
                           ),
                         ),
@@ -184,13 +154,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Text(
                                   'New Releases',
                                   style: context.titleLarge,
-                                ),
-                              ),
-                              LayoutBuilder(
-                                builder: (context, constraints) =>
-                                    PlaylistSongs(
-                                  playlist: newReleases,
-                                  constraints: constraints,
                                 ),
                               ),
                             ],

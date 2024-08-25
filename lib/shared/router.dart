@@ -58,6 +58,19 @@ final appRouter = GoRouter(
       ),
     ),
 
+    //Spells
+    // GoRoute(
+    //   path: '/spells/',
+    //   pageBuilder: (context, state) => const MaterialPage<void>(
+    //     key: _pageKey,
+    //     child: RootLayout(
+    //       key: _scaffoldKey,
+    //       currentIndex: 0,
+    //       child: SpellsScreen(),
+    //     ),
+    //   ),
+    // ),
+
     //HousesHomeScreen
     GoRoute(
       path: '/houses/:id',
