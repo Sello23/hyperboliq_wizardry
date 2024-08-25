@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hyperboliq/features/spells/spells_screen.dart';
+import 'package:hyperboliq/features/spells/widgets/spells_screen.dart';
 import 'package:hyperboliq/shared/app_strings.dart';
 import 'package:hyperboliq/shared/providers/houses_provider.dart';
 
+import '../features/elixirs/widgets/elixirs_screen.dart';
 import '../features/home/home.dart';
 import '../features/houses/widgets/house_screen.dart';
 import 'widgets/widget_exports.dart';
@@ -68,6 +69,19 @@ final appRouter = GoRouter(
           key: _scaffoldKey,
           currentIndex: 1,
           child: SpellsScreen(),
+        ),
+      ),
+    ),
+
+    // Spells
+    GoRoute(
+      path: '/elixirs',
+      pageBuilder: (context, state) => const MaterialPage<void>(
+        key: _pageKey,
+        child: RootLayout(
+          key: _scaffoldKey,
+          currentIndex: 2,
+          child: ElixirsScreen(),
         ),
       ),
     ),

@@ -36,9 +36,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   isScrollable: true,
                   tabs: [
                     Tab(text: AppStrings.homeScreenTitle),
-                    Tab(text: 'Recently Played'),
-                    Tab(text: 'New Releases'),
-                    Tab(text: 'Top Songs'),
                   ],
                 ),
               ),
@@ -97,70 +94,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                     ],
-                  ),
-                ),
-                AdaptiveContainer(
-                  columnSpan: 12,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 15,
-                          vertical: 10,
-                        ),
-                        child: Text(
-                          'Recently played',
-                          style: context.headlineSmall,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                AdaptiveContainer(
-                  columnSpan: 12,
-                  child: Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Flexible(
-                          flex: 10,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 8, bottom: 8),
-                                child: Text(
-                                  'Top Songs Today',
-                                  style: context.titleLarge,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(width: 25),
-                        Flexible(
-                          flex: 10,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 8, bottom: 8),
-                                child: Text(
-                                  'New Releases',
-                                  style: context.titleLarge,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
                   ),
                 ),
               ],

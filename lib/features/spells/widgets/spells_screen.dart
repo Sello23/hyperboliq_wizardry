@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hyperboliq/shared/models/spell.dart';
 import 'package:hyperboliq/shared/providers/spells_provider.dart';
 
-import '../../shared/widgets/image_tile.dart';
+import '../../../shared/widgets/image_tile.dart';
 
 class SpellsScreen extends StatelessWidget {
   const SpellsScreen({super.key});

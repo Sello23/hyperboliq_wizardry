@@ -45,9 +45,6 @@ class HomeHouses extends StatelessWidget {
         ),
       ),
       child: ListTile(
-        // leading: CircleAvatar(
-        //   backgroundImage: AssetImage(artist.image.image),
-        // ),
         title: Text(
           house.name,
           maxLines: 2,
