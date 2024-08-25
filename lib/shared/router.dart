@@ -5,15 +5,10 @@ import 'package:hyperboliq/shared/providers/houses.dart';
 
 import '../features/home/home.dart';
 import '../features/houses/widgets/house_screen.dart';
-import 'providers/artists.dart';
-import 'providers/playlists.dart';
 import 'widgets/widget_exports.dart';
 
 const _pageKey = ValueKey('_pageKey');
 const _scaffoldKey = ValueKey('_scaffoldKey');
-
-final artistsProvider = ArtistsProvider();
-final playlistsProvider = PlaylistsProvider();
 final housesProvider = HousesProvider();
 
 const List<NavigationDestination> destinations = [
