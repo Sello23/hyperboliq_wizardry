@@ -11,31 +11,75 @@ class ElixirsScreen extends StatelessWidget {
     ElixirsProvider elixirsProvider = ElixirsProvider();
     List<Elixir> elixirs = elixirsProvider.elixirs;
 
+    Map<String, List<Elixir>> groupedElixirs =
+        groupElixirsByFirstLetter(elixirs);
+    // Sort the groups alphabetically
+    List<String> sortedKeys = groupedElixirs.keys.toList()..sort();
+
     return LayoutBuilder(
       builder: (context, constraints) {
-        const itemWidth = 140.0;
-        final crossAxisCount = (constraints.maxWidth ~/ itemWidth).clamp(1, 5);
-        final sortedElixirs = elixirs..sort((a, b) => a.name.compareTo(b.name));
-
         return Scaffold(
           primary: false,
           appBar: AppBar(
             title: const Text('Elixirs'),
             toolbarHeight: kToolbarHeight * 2,
           ),
-          body: GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: crossAxisCount,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              childAspectRatio: 2,
-            ),
-            itemCount: sortedElixirs.length,
+          body: ListView.builder(
+            itemCount: sortedKeys.length,
             itemBuilder: (context, index) {
-              return ElixirCard(elixirName: sortedElixirs[index].name);
+              String letter = sortedKeys[index];
+              List<Elixir> elixirsForLetter = groupedElixirs[letter]!;
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Alphabet letter section header
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      letter,
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  // Elixirs list under the alphabet
+                  GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: MediaQuery.of(context).size.width ~/ 140,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                      childAspectRatio: 2,
+                    ),
+                    itemCount: elixirsForLetter.length,
+                    itemBuilder: (context, index) {
+                      return ElixirCard(
+                        elixirName: elixirsForLetter[index].name,
+                      );
+                    },
+                  ),
+                ],
+              );
             },
           ),
         );
+      },
+    );
+  }
+
+  // Function to group elixirs by the first letter of their name
+  Map<String, List<Elixir>> groupElixirsByFirstLetter(List<Elixir> elixirs) {
+    return elixirs.fold<Map<String, List<Elixir>>>(
+      {},
+      (Map<String, List<Elixir>> groupedElixirs, Elixir elixir) {
+        String firstLetter = elixir.name[0].toUpperCase();
+        if (!groupedElixirs.containsKey(firstLetter)) {
+          groupedElixirs[firstLetter] = [];
+        }
+        groupedElixirs[firstLetter]!.add(elixir);
+        return groupedElixirs;
       },
     );
   }

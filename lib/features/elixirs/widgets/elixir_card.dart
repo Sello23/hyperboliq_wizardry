@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hyperboliq/shared/extensions.dart';
 
 class ElixirCard extends StatelessWidget {
   final String elixirName;
@@ -8,15 +9,11 @@ class ElixirCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(elixirName,
-                style: const TextStyle(fontWeight: FontWeight.normal)),
-          ],
+      child: Center(
+        child: Text(
+          elixirName,
+          style: context.textSmall,
+          textAlign: TextAlign.center,
         ),
       ),
     );

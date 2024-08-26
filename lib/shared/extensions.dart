@@ -52,7 +52,7 @@ extension TypographyUtils on BuildContext {
       );
   TextStyle? get textSmall => textTheme.bodySmall?.copyWith(
     color: colors.onSurface,
-    fontSize: 8
+    fontSize: 16
   );
 }
 
