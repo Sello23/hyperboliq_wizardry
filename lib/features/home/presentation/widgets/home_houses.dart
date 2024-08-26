@@ -37,7 +37,7 @@ class HomeHouses extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(house.houseBackgroundImage.image),
+          image: AssetImage(house.houseBackgroundImage!.image),
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.5),
               BlendMode.darken), // Optional: Darken the background for better text readability

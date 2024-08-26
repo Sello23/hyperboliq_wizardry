@@ -50,7 +50,7 @@ class HouseScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               ClippedImage(
-                                house.houseBackgroundImage.image,
+                                house.houseBackgroundImage!.image,
                                 fit: BoxFit.cover,
                               ),
                               Expanded(
@@ -98,7 +98,7 @@ class HouseScreen extends StatelessWidget {
                             SizedBox(
                               height: 300,
                               child: ClippedImage(
-                                house.houseBackgroundImage.image,
+                                house.houseBackgroundImage!.image,
                                 fit: BoxFit.cover,
                               ),
                             ),

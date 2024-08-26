@@ -14,7 +14,7 @@ class House {
   final String commonRoom;
   final List<Head> heads;
   final List<Trait> traits;
-  final MyImage houseBackgroundImage;
+  final MyImage? houseBackgroundImage;
 
   House({
     required this.id,
@@ -27,35 +27,36 @@ class House {
     required this.commonRoom,
     required this.heads,
     required this.traits,
-    required this.houseBackgroundImage,
+    this.houseBackgroundImage,
   });
 
-// factory House.fromJson(Map<String, dynamic> json) {
-//   return House(
-//     id: json['id'],
-//     name: json['name'],
-//     houseColours: json['houseColours'],
-//     founder: json['founder'],
-//     animal: json['animal'],
-//     element: json['element'],
-//     ghost: json['ghost'],
-//     commonRoom: json['commonRoom'],
-//     heads: (json['heads'] as List).map((e) => Head.fromJson(e)).toList(),
-//     traits: (json['traits'] as List).map((e) => Trait.fromJson(e)).toList(),
-//   );
-// }
-//
-// Map<String, dynamic> toJson() {
-//   return {
-//     'id': id,
-//     'name': name,
-//     'houseColours': houseColours,
-//     'founder': founder,
-//     'animal': animal,
-//     'element': element,
-//     'ghost': ghost,
-//     'commonRoom': commonRoom,
-//     'heads': heads.map((e) => e.toJson()).toList(),
-//     'traits': traits.map((e) => e.toJson()).toList(),
-//   };
+  factory House.fromJson(Map<String, dynamic> json) {
+    return House(
+      id: json['id'],
+      name: json['name'],
+      houseColours: json['houseColours'],
+      founder: json['founder'],
+      animal: json['animal'],
+      element: json['element'],
+      ghost: json['ghost'],
+      commonRoom: json['commonRoom'],
+      heads: (json['heads'] as List).map((e) => Head.fromJson(e)).toList(),
+      traits: (json['traits'] as List).map((e) => Trait.fromJson(e)).toList(),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'houseColours': houseColours,
+      'founder': founder,
+      'animal': animal,
+      'element': element,
+      'ghost': ghost,
+      'commonRoom': commonRoom,
+      'heads': heads.map((e) => e.toJson()).toList(),
+      'traits': traits.map((e) => e.toJson()).toList(),
+    };
+  }
 }
