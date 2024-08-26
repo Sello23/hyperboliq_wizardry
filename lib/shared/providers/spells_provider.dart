@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:collection/collection.dart';
 import 'package:hyperboliq/shared/models/my_image.dart';
 
 import '../models/spell.dart';
@@ -145,4 +146,8 @@ class SpellsProvider {
             spellImage: images()[Random().nextInt(images().length - 1)]),
         // Add more spells as needed...
       ];
+
+  Spell? getSpell(String id) {
+    return spells.firstWhereOrNull((spell) => spell.id == id);
+  }
 }

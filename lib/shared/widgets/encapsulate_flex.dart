@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class HouseContent extends StatelessWidget {
-  const HouseContent({
+class EncapsulateFlex extends StatelessWidget {
+  const EncapsulateFlex({
     super.key,
     required this.child,
     this.maxWidth = 960,

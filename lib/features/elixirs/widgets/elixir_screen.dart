@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hyperboliq/shared/extensions.dart';
 import 'package:hyperboliq/shared/models/elixir/elixir.dart';
-import 'package:hyperboliq/shared/widgets/house_content.dart';
 
+import '../../../shared/widgets/encapsulate_flex.dart';
 import '../../../shared/widgets/image_clipper.dart';
 import 'elixir_ingredients.dart';
 import 'elixir_inventors.dart';
@@ -34,7 +34,7 @@ class ElixirScreen extends StatelessWidget {
                 // Header section
                 SizedBox(
                   height: headerHeight,
-                  child: HouseContent(
+                  child: EncapsulateFlex(
                     child: Builder(
                       builder: (context) {
                         if (constraints.maxWidth > 500) {
@@ -93,7 +93,8 @@ class ElixirScreen extends StatelessWidget {
                             const SizedBox(
                               height: 300,
                               child: ClippedImage(
-                                'assets/images/elixirs/elixir_background.jpg',                                fit: BoxFit.cover,
+                                'assets/images/elixirs/elixir_background.jpg',
+                                fit: BoxFit.cover,
                               ),
                             ),
                             Padding(

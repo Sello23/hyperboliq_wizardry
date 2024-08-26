@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hyperboliq/features/spells/widgets/spell_screen.dart';
 import 'package:hyperboliq/shared/app_strings.dart';
+import 'package:hyperboliq/shared/models/spell.dart';
 import 'package:hyperboliq/shared/providers/elixirs_provider.dart';
 import 'package:hyperboliq/shared/providers/houses_provider.dart';
+import 'package:hyperboliq/shared/providers/spells_provider.dart';
 import 'package:hyperboliq/shared/widgets/root_layout.dart';
 
 import '../features/elixirs/widgets/elixir_screen.dart';
@@ -15,6 +18,7 @@ const _pageKey = ValueKey('_pageKey');
 const _scaffoldKey = ValueKey('_scaffoldKey');
 final housesProvider = HousesProvider();
 final ElixirsProvider elixirsProvider = ElixirsProvider();
+final SpellsProvider spellsProvider = SpellsProvider();
 
 const List<NavigationDestination> destinations = [
   NavigationDestination(
@@ -65,16 +69,31 @@ final appRouter = GoRouter(
 
     // Spells
     GoRoute(
-      path: '/spells',
-      pageBuilder: (context, state) => const MaterialPage<void>(
-        key: _pageKey,
-        child: RootLayout(
-          key: _scaffoldKey,
-          currentIndex: 1,
-          child: SpellsScreen(),
-        ),
-      ),
-    ),
+        path: '/spells',
+        pageBuilder: (context, state) => const MaterialPage<void>(
+              key: _pageKey,
+              child: RootLayout(
+                key: _scaffoldKey,
+                currentIndex: 1,
+                child: SpellsScreen(),
+              ),
+            ),
+        routes: [
+          GoRoute(
+            path: ':id',
+            pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              child: RootLayout(
+                key: _scaffoldKey,
+                currentIndex: 1,
+                child: SpellScreen(
+                  spell:
+                      spellsProvider.getSpell(state.pathParameters['id']!)!,
+                ),
+              ),
+            ),
+          ),
+        ]),
 
     // Elixirs
     GoRoute(

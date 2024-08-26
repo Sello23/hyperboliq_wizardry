@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hyperboliq/shared/models/spell.dart';
 import 'package:hyperboliq/shared/providers/spells_provider.dart';
 
@@ -40,7 +41,8 @@ class SpellsScreen extends StatelessWidget {
                           title: spell.name,
                           subtitle: spell.effect,
                         ),
-                        onTap: () {});
+                        onTap: () =>
+                            GoRouter.of(context).go('/spells/${spell.id}'));
                   },
                 ),
               ),

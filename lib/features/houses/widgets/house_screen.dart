@@ -3,9 +3,9 @@ import 'package:go_router/go_router.dart';
 import 'package:hyperboliq/features/houses/widgets/house_heads.dart';
 import 'package:hyperboliq/features/houses/widgets/house_traits.dart';
 import 'package:hyperboliq/shared/extensions.dart';
-import 'package:hyperboliq/shared/widgets/house_content.dart';
 
 import '../../../shared/models/house/house.dart';
+import '../../../shared/widgets/encapsulate_flex.dart';
 import '../../../shared/widgets/image_clipper.dart';
 
 class HouseScreen extends StatelessWidget {
@@ -41,7 +41,7 @@ class HouseScreen extends StatelessWidget {
                 // Header section
                 SizedBox(
                   height: headerHeight,
-                  child: HouseContent(
+                  child: EncapsulateFlex(
                     child: Builder(
                       builder: (context) {
                         if (constraints.maxWidth > 500) {
