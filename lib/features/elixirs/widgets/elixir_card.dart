@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hyperboliq/shared/extensions.dart';
+import 'package:hyperboliq/shared/models/elixir/elixir.dart';
 
 class ElixirCard extends StatelessWidget {
-  final String elixirName;
+  final Elixir elixir;
 
-  const ElixirCard({super.key, required this.elixirName});
+  const ElixirCard({super.key, required this.elixir});
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Center(
-        child: Text(
-          elixirName,
-          style: context.textSmall,
-          textAlign: TextAlign.center,
+    return GestureDetector(
+      onTap: () => GoRouter.of(context).go('/elixirs/${elixir.id}'),
+      child: Card(
+        child: Center(
+          child: Text(
+            elixir.name,
+            style: context.textSmall,
+            textAlign: TextAlign.center,
+          ),
         ),
       ),
     );

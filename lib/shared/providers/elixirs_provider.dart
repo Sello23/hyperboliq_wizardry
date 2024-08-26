@@ -173,4 +173,8 @@ class ElixirsProvider {
     ),
     // Add more elixir entries as needed
   ];
+
+  Elixir? getElixir(String id) {
+    return elixirs.firstWhereOrNull((elixir) => elixir.id == id);
+  }
 }

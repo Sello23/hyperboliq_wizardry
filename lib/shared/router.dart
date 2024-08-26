@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hyperboliq/features/spells/widgets/spells_screen.dart';
 import 'package:hyperboliq/shared/app_strings.dart';
+import 'package:hyperboliq/shared/providers/elixirs_provider.dart';
 import 'package:hyperboliq/shared/providers/houses_provider.dart';
+import 'package:hyperboliq/shared/widgets/root_layout.dart';
 
+import '../features/elixirs/widgets/elixir_screen.dart';
 import '../features/elixirs/widgets/elixirs_screen.dart';
-import '../features/home/home.dart';
+import '../features/home/widgets/home_screen.dart';
 import '../features/houses/widgets/house_screen.dart';
-import 'widgets/widget_exports.dart';
+import '../features/spells/widgets/spells_screen.dart';
 
 const _pageKey = ValueKey('_pageKey');
 const _scaffoldKey = ValueKey('_scaffoldKey');
 final housesProvider = HousesProvider();
+final ElixirsProvider elixirsProvider = ElixirsProvider();
 
 const List<NavigationDestination> destinations = [
   NavigationDestination(
@@ -73,18 +76,33 @@ final appRouter = GoRouter(
       ),
     ),
 
-    // Spells
+    // Elixirs
     GoRoute(
-      path: '/elixirs',
-      pageBuilder: (context, state) => const MaterialPage<void>(
-        key: _pageKey,
-        child: RootLayout(
-          key: _scaffoldKey,
-          currentIndex: 2,
-          child: ElixirsScreen(),
-        ),
-      ),
-    ),
+        path: '/elixirs',
+        pageBuilder: (context, state) => const MaterialPage<void>(
+              key: _pageKey,
+              child: RootLayout(
+                key: _scaffoldKey,
+                currentIndex: 2,
+                child: ElixirsScreen(),
+              ),
+            ),
+        routes: [
+          GoRoute(
+            path: ':id',
+            pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              child: RootLayout(
+                key: _scaffoldKey,
+                currentIndex: 2,
+                child: ElixirScreen(
+                  elixir:
+                      elixirsProvider.getElixir(state.pathParameters['id']!)!,
+                ),
+              ),
+            ),
+          ),
+        ]),
 
     //HousesHomeScreen
     GoRoute(

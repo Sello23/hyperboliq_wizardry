@@ -97,6 +97,6 @@ flutter:
     uses-material-design: true
     assets:
       - assets/images/
-      - assets/images/playlists/
       - assets/images/houses/
       - assets/images/spells/
+      - assets/images/elixirs/

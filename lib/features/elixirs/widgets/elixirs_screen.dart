@@ -56,7 +56,7 @@ class ElixirsScreen extends StatelessWidget {
                     itemCount: elixirsForLetter.length,
                     itemBuilder: (context, index) {
                       return ElixirCard(
-                        elixirName: elixirsForLetter[index].name,
+                        elixir: elixirsForLetter[index],
                       );
                     },
                   ),
