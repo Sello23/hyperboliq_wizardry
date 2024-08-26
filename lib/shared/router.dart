@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hyperboliq/shared/app_strings.dart';
+import 'package:hyperboliq/shared/models/custom_navigation_destination.dart';
 import 'package:hyperboliq/shared/providers/elixirs_provider.dart';
 import 'package:hyperboliq/shared/providers/houses_provider.dart';
 import 'package:hyperboliq/shared/providers/spells_provider.dart';
@@ -19,37 +20,23 @@ final housesProvider = HousesProvider();
 final ElixirsProvider elixirsProvider = ElixirsProvider();
 final SpellsProvider spellsProvider = SpellsProvider();
 
-const List<NavigationDestination> destinations = [
-  NavigationDestination(
+const List<CustomNavigationDestination> destinations = [
+  CustomNavigationDestination(
     label: AppStrings.houseOverview,
     icon: Icon(Icons.house_sharp),
     route: '/',
   ),
-  NavigationDestination(
+  CustomNavigationDestination(
     label: AppStrings.spellsLibrary,
     icon: Icon(Icons.flash_on),
     route: '/spells',
   ),
-  NavigationDestination(
+  CustomNavigationDestination(
     label: AppStrings.elixirsEncyclopedia,
     icon: Icon(Icons.science),
     route: '/elixirs',
   ),
 ];
-
-class NavigationDestination {
-  const NavigationDestination({
-    required this.route,
-    required this.label,
-    required this.icon,
-    this.child,
-  });
-
-  final String route;
-  final String label;
-  final Icon icon;
-  final Widget? child;
-}
 
 final appRouter = GoRouter(
   routes: [

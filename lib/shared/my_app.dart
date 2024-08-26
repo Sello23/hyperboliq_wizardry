@@ -2,7 +2,7 @@ import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:hyperboliq/shared/app_strings.dart';
 
-import 'providers/theme.dart';
+import 'theme.dart';
 import 'router.dart';
 
 class MyApp extends StatefulWidget {
