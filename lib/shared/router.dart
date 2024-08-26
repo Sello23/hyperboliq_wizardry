@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hyperboliq/features/spells/widgets/spell_screen.dart';
 import 'package:hyperboliq/shared/app_strings.dart';
-import 'package:hyperboliq/shared/models/spell.dart';
 import 'package:hyperboliq/shared/providers/elixirs_provider.dart';
 import 'package:hyperboliq/shared/providers/houses_provider.dart';
 import 'package:hyperboliq/shared/providers/spells_provider.dart';
 import 'package:hyperboliq/shared/widgets/root_layout.dart';
 
-import '../features/elixirs/widgets/elixir_screen.dart';
-import '../features/elixirs/widgets/elixirs_screen.dart';
-import '../features/home/widgets/home_screen.dart';
-import '../features/houses/widgets/house_screen.dart';
-import '../features/spells/widgets/spells_screen.dart';
+import '../features/elixirs/presentation/screens/elixir_screen.dart';
+import '../features/elixirs/presentation/screens/elixirs_screen.dart';
+import '../features/home/presentation/screens/home_screen.dart';
+import '../features/houses/presentation/screens/house_screen.dart';
+import '../features/spells/presentation/screens/spell_screen.dart';
+import '../features/spells/presentation/screens/spells_screen.dart';
 
 const _pageKey = ValueKey('_pageKey');
 const _scaffoldKey = ValueKey('_scaffoldKey');

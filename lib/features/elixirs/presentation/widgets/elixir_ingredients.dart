@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hyperboliq/shared/models/elixir/ingredient.dart';
-import '../../../shared/widgets/widget_exports.dart';
+import '../../../../shared/widgets/adaptive_table.dart';
 
 class ElixirIngredients extends StatelessWidget {
   const ElixirIngredients({super.key, required this.ingredients});

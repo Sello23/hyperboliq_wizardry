@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hyperboliq/shared/extensions.dart';
 import 'package:hyperboliq/shared/models/house/house.dart';
-
-import '../../../shared/extensions.dart';
 
 class HomeHouses extends StatelessWidget {
   const HomeHouses({

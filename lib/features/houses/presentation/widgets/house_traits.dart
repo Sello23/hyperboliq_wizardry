@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hyperboliq/shared/models/house/trait.dart';
-import '../../../shared/models/house/house.dart';
-import '../../../shared/widgets/widget_exports.dart';
+
+import '../../../../shared/models/house/house.dart';
+import '../../../../shared/widgets/adaptive_table.dart';
 
 class HouseTraits extends StatelessWidget {
   const HouseTraits({super.key, required this.house});

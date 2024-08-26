@@ -1,23 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hyperboliq/shared/extensions.dart';
-import 'package:hyperboliq/shared/models/elixir/elixir.dart';
 
-import '../../../shared/widgets/encapsulate_flex.dart';
-import '../../../shared/widgets/image_clipper.dart';
-import 'elixir_ingredients.dart';
-import 'elixir_inventors.dart';
+import '../../../../shared/models/house/house.dart';
+import '../../../../shared/widgets/encapsulate_flex.dart';
+import '../../../../shared/widgets/image_clipper.dart';
+import '../widgets/house_heads.dart';
+import '../widgets/house_traits.dart';
 
-class ElixirScreen extends StatelessWidget {
-  const ElixirScreen({required this.elixir, super.key});
+class HouseScreen extends StatelessWidget {
+  const HouseScreen({required this.house, super.key});
 
-  final Elixir elixir;
+  final House house;
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
+        final colors = Theme.of(context).colorScheme;
         double headerHeight = constraints.maxWidth > 500 ? 300 : 400;
+
+        final TextStyle commonTextStyle = context.bodyLarge!.copyWith(
+          color: colors.onSurface,
+          fontSize: 15,
+        );
+
         const TextAlign commonTextAlign = TextAlign.start;
 
         return DefaultTabController(
@@ -25,9 +32,9 @@ class ElixirScreen extends StatelessWidget {
           child: Scaffold(
             appBar: AppBar(
               leading: BackButton(
-                onPressed: () => GoRouter.of(context).go('/elixirs'),
+                onPressed: () => GoRouter.of(context).go('/'),
               ),
-              title: Text('ELIXIR - ${elixir.name}'),
+              title: Text('HOUSE - ${house.name}'),
             ),
             body: Column(
               children: [
@@ -42,8 +49,8 @@ class ElixirScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              const ClippedImage(
-                                'assets/images/elixirs/elixir_background.jpg',
+                              ClippedImage(
+                                house.houseBackgroundImage.image,
                                 fit: BoxFit.cover,
                               ),
                               Expanded(
@@ -54,32 +61,30 @@ class ElixirScreen extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        elixir.effect ?? 'no effect mentioned',
-                                        style: context.navScreensTextStyle,
+                                        house.houseColours,
+                                        style: commonTextStyle,
                                         textAlign: commonTextAlign,
                                       ),
                                       Text(
-                                        elixir.sideEffects ??
-                                            'no side effects mentioned',
-                                        style: context.navScreensTextStyle,
+                                        house.animal,
+                                        style: commonTextStyle,
                                         textAlign: commonTextAlign,
                                       ),
                                       Text(
-                                        elixir.characteristics ??
-                                            'no char. mentioned',
-                                        style: context.navScreensTextStyle,
+                                        house.element,
+                                        style: commonTextStyle,
                                         textAlign: commonTextAlign,
                                       ),
                                       Text(
-                                        elixir.difficulty,
-                                        style: context.navScreensTextStyle,
+                                        house.ghost,
+                                        style: commonTextStyle,
                                         textAlign: commonTextAlign,
                                       ),
                                       Text(
-                                        elixir.manufacturer ?? 'man. not mentioned',
-                                        style: context.navScreensTextStyle,
+                                        house.commonRoom,
+                                        style: commonTextStyle,
                                         textAlign: commonTextAlign,
-                                      )
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -90,33 +95,31 @@ class ElixirScreen extends StatelessWidget {
                         return Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const SizedBox(
+                            SizedBox(
                               height: 300,
                               child: ClippedImage(
-                                'assets/images/elixirs/elixir_background.jpg',
+                                house.houseBackgroundImage.image,
                                 fit: BoxFit.cover,
                               ),
                             ),
                             Padding(
                               padding:
-                              const EdgeInsets.only(left: 35.0, top: 20.0),
+                                  const EdgeInsets.only(left: 35.0, top: 20.0),
                               child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Column(
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          elixir.effect ??
-                                              "effects not mentioned",
-                                          style: context.textSmall,
+                                          house.houseColours,
+                                          style: commonTextStyle,
                                           textAlign: commonTextAlign,
                                         ),
                                         Text(
-                                          elixir.sideEffects ??
-                                              "effects not mentioned",
-                                          style: context.textSmall,
+                                          house.animal,
+                                          style: commonTextStyle,
                                           textAlign: commonTextAlign,
                                         ),
                                       ],
@@ -125,17 +128,16 @@ class ElixirScreen extends StatelessWidget {
                                     // Adds 16 pixels of space between the columns
                                     Column(
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          elixir.characteristics ??
-                                              "char. not mentioned",
-                                          style: context.textSmall,
+                                          house.element,
+                                          style: commonTextStyle,
                                           textAlign: commonTextAlign,
                                         ),
                                         Text(
-                                          elixir.difficulty,
-                                          style: context.textSmall,
+                                          house.ghost,
+                                          style: commonTextStyle,
                                           textAlign: commonTextAlign,
                                         ),
                                       ],
@@ -148,19 +150,21 @@ class ElixirScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+
                 // TabBar section
                 const TabBar(
                   tabs: [
-                    Tab(text: 'Ingredients'),
-                    Tab(text: 'Inventors'),
+                    Tab(text: 'Heads'),
+                    Tab(text: 'Traits'),
                   ],
                 ),
+
                 // TabBarView section
                 Expanded(
                   child: TabBarView(
                     children: [
-                      SingleChildScrollView(child: ElixirIngredients(ingredients: elixir.ingredients,)),
-                      SingleChildScrollView(child: ElixirInventors(inventors: elixir.inventors)),
+                      SingleChildScrollView(child: HouseHeads(house: house)),
+                      SingleChildScrollView(child: HouseTraits(house: house)),
                     ],
                   ),
                 ),

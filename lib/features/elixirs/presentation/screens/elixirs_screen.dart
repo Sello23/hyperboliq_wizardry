@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hyperboliq/features/elixirs/widgets/elixir_card.dart';
 import 'package:hyperboliq/shared/models/elixir/elixir.dart';
 import 'package:hyperboliq/shared/providers/elixirs_provider.dart';
+
+import '../widgets/elixir_card.dart';
 
 class ElixirsScreen extends StatelessWidget {
   const ElixirsScreen({super.key});

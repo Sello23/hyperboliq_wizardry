@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../shared/extensions.dart';
+import '../../../../shared/models/house/house.dart';
 import '../../../../shared/widgets/outlined_card.dart';
-import '../../../shared/models/house/house.dart';
 
 class HouseCard extends StatelessWidget {
   const HouseCard({

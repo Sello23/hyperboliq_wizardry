@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../shared/models/house/head.dart';
-import '../../../shared/models/house/house.dart';
-import '../../../shared/widgets/widget_exports.dart';
+
+import '../../../../shared/models/house/head.dart';
+import '../../../../shared/models/house/house.dart';
+import '../../../../shared/widgets/adaptive_table.dart';
 
 class HouseHeads extends StatelessWidget {
   const HouseHeads({super.key, required this.house});

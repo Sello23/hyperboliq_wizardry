@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:adaptive_components/adaptive_components.dart';
 import 'package:hyperboliq/shared/app_strings.dart';
+import 'package:hyperboliq/shared/extensions.dart';
 import 'package:hyperboliq/shared/models/house/house.dart';
 
-import '../../../shared/extensions.dart';
-import '../../../shared/providers/houses_provider.dart';
-import '../../../shared/widgets/widget_exports.dart';
-import 'widget_exports.dart';
+import '../../../../shared/providers/houses_provider.dart';
+import '../../../../shared/widgets/brightness_toggle.dart';
+import '../widgets/home_highlight.dart';
+import '../widgets/home_houses.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

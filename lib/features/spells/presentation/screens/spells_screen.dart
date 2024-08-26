@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hyperboliq/shared/models/spell.dart';
 import 'package:hyperboliq/shared/providers/spells_provider.dart';
 
-import '../../../shared/widgets/image_tile.dart';
+import '../../../../shared/widgets/image_tile.dart';
 
 class SpellsScreen extends StatelessWidget {
   const SpellsScreen({super.key});
