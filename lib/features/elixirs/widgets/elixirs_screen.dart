@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hyperboliq/features/elixirs/widgets/elixir_card.dart';
 import 'package:hyperboliq/shared/models/elixir/elixir.dart';
 import 'package:hyperboliq/shared/providers/elixirs_provider.dart';
-
-import 'elixir_list.dart';
 
 class ElixirsScreen extends StatelessWidget {
   const ElixirsScreen({super.key});
@@ -14,33 +13,27 @@ class ElixirsScreen extends StatelessWidget {
 
     return LayoutBuilder(
       builder: (context, constraints) {
+        const itemWidth = 140.0;
+        final crossAxisCount = (constraints.maxWidth ~/ itemWidth).clamp(1, 5);
+        final sortedElixirs = elixirs..sort((a, b) => a.name.compareTo(b.name));
+
         return Scaffold(
           primary: false,
           appBar: AppBar(
             title: const Text('Elixirs'),
             toolbarHeight: kToolbarHeight * 2,
           ),
-          body: Column(
-            children: [
-              Expanded(
-                child: GridView.builder(
-                  padding: const EdgeInsets.all(1),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: (constraints.maxWidth ~/ 160).toInt(),
-                    childAspectRatio: 0.70,
-                    mainAxisSpacing: 1,
-                    crossAxisSpacing: 1,
-                  ),
-                  itemCount: elixirs.length,
-                  itemBuilder: (context, index) {
-                    final elixir = elixirs[index];
-                    return ElixirList(
-                      elixir: elixir,
-                    );
-                  },
-                ),
-              ),
-            ],
+          body: GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: crossAxisCount,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+              childAspectRatio: 2,
+            ),
+            itemCount: sortedElixirs.length,
+            itemBuilder: (context, index) {
+              return ElixirCard(elixirName: sortedElixirs[index].name);
+            },
           ),
         );
       },
