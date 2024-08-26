@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart' as go;
 import 'package:universal_platform/universal_platform.dart';
 
-import '../playback/bloc/bloc.dart';
 import '../router.dart' as router;
 import 'adaptive_navigation.dart';
 
@@ -21,10 +19,7 @@ class RootLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = BlocProvider.of<PlaybackBloc>(context);
-    return BlocBuilder<PlaybackBloc, PlaybackState>(
-      bloc: bloc,
-      builder: (context, state) => LayoutBuilder(builder: (context, dimens) {
+      return LayoutBuilder(builder: (context, dimens) {
         void onSelected(int index) {
           final destination = router.destinations[index];
           go.GoRouter.of(context).go(destination.route);
@@ -51,8 +46,7 @@ class RootLayout extends StatelessWidget {
             ],
           ),
         );
-      }),
-    );
+      });
   }
 }
 

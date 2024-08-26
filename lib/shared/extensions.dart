@@ -50,6 +50,16 @@ extension TypographyUtils on BuildContext {
   TextStyle? get bodySmall => textTheme.bodySmall?.copyWith(
         color: colors.onSurface,
       );
+  TextStyle? get textSmall => textTheme.bodySmall?.copyWith(
+    color: colors.onSurface,
+    fontSize: 10
+  );
+
+  TextStyle? get navScreensTextStyle => textTheme.bodyLarge?.copyWith(
+    color: colors.onSurface,
+    fontSize: 15,
+  );
+
 }
 
 extension BreakpointUtils on BoxConstraints {
