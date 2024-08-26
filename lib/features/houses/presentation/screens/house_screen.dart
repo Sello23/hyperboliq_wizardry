@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hyperboliq/shared/extensions.dart';
 
-import '../../../../shared/models/house/house.dart';
+import '../../data/models/house.dart';
 import '../../../../shared/widgets/encapsulate_flex.dart';
 import '../../../../shared/widgets/image_clipper.dart';
 import '../widgets/house_heads.dart';

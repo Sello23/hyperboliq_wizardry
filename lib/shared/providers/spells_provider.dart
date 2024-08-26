@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:collection/collection.dart';
 import 'package:hyperboliq/shared/models/my_image.dart';
 
-import '../models/spell.dart';
+import '../../features/spells/data/models/spell.dart';
 
 class SpellsProvider {
   static SpellsProvider get shared => SpellsProvider();

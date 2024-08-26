@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hyperboliq/shared/models/elixir/ingredient.dart';
+import 'package:hyperboliq/features/elixirs/data/models/ingredient.dart';
 import '../../../../shared/widgets/adaptive_table.dart';
 
 class ElixirIngredients extends StatelessWidget {

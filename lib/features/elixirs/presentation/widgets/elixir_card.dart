@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hyperboliq/shared/extensions.dart';
-import 'package:hyperboliq/shared/models/elixir/elixir.dart';
+import 'package:hyperboliq/features/elixirs/data/models/elixir.dart';
 
 class ElixirCard extends StatelessWidget {
   final Elixir elixir;

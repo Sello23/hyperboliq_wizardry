@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hyperboliq/shared/models/spell.dart';
+import 'package:hyperboliq/features/spells/data/models/spell.dart';
 import 'package:hyperboliq/shared/providers/spells_provider.dart';
 
 import '../../../../shared/widgets/image_tile.dart';

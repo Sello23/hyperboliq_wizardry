@@ -1,4 +1,4 @@
-import 'my_image.dart';
+import '../../../../shared/models/my_image.dart';
 
 class Spell {
   final String id;

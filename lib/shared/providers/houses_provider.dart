@@ -1,8 +1,8 @@
 import 'package:collection/collection.dart';
-import 'package:hyperboliq/shared/models/house/house.dart';
+import 'package:hyperboliq/features/houses/data/models/house.dart';
 
-import '../models/house/head.dart';
-import '../models/house/trait.dart';
+import '../../features/houses/data/models/head.dart';
+import '../../features/houses/data/models/trait.dart';
 import '../models/my_image.dart';
 
 class HousesProvider {

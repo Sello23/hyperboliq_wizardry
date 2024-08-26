@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hyperboliq/shared/models/elixir/elixir.dart';
+import 'package:hyperboliq/features/elixirs/data/models/elixir.dart';
 import 'package:hyperboliq/shared/providers/elixirs_provider.dart';
 
 import '../widgets/elixir_card.dart';

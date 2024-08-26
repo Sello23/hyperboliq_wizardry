@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../shared/extensions.dart';
-import '../../../../shared/models/house/house.dart';
+import '../../data/models/house.dart';
 import '../../../../shared/widgets/outlined_card.dart';
 
 class HouseCard extends StatelessWidget {

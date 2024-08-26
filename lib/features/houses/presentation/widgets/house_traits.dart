@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hyperboliq/shared/models/house/trait.dart';
+import 'package:hyperboliq/features/houses/data/models/trait.dart';
 
-import '../../../../shared/models/house/house.dart';
+import '../../data/models/house.dart';
 import '../../../../shared/widgets/adaptive_table.dart';
 
 class HouseTraits extends StatelessWidget {

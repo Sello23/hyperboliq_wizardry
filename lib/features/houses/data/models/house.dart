@@ -1,7 +1,7 @@
-import 'package:hyperboliq/shared/models/house/trait.dart';
+import 'package:hyperboliq/features/houses/data/models/trait.dart';
 
 import 'head.dart';
-import '../my_image.dart';
+import '../../../../shared/models/my_image.dart';
 
 class House {
   final String id;
