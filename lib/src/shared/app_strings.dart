@@ -10,4 +10,6 @@ class AppStrings {
   static const String spellsLibrary = "Spells";
   static const String elixirsEncyclopedia = "Elixirs";
 
+  static const String baseUrl = 'wizard-world-api.herokuapp.com';
+
 }
