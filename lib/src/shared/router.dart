@@ -1,0 +1,128 @@
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hyperboliq/src/shared/providers/elixirs_provider.dart';
+import 'package:hyperboliq/src/shared/providers/houses_provider.dart';
+import 'package:hyperboliq/src/shared/providers/spells_provider.dart';
+import 'package:hyperboliq/src/shared/widgets/root_layout.dart';
+
+
+import '../features/elixirs/presentation/screens/elixir_screen.dart';
+import '../features/elixirs/presentation/screens/elixirs_screen.dart';
+import '../features/home/presentation/screens/home_screen.dart';
+import '../features/houses/presentation/screens/house_screen.dart';
+import '../features/spells/presentation/screens/spell_screen.dart';
+import '../features/spells/presentation/screens/spells_screen.dart';
+import 'app_strings.dart';
+import 'models/custom_navigation_destination.dart';
+
+const _pageKey = ValueKey('_pageKey');
+const _scaffoldKey = ValueKey('_scaffoldKey');
+final housesProvider = HousesProvider();
+final ElixirsProvider elixirsProvider = ElixirsProvider();
+final SpellsProvider spellsProvider = SpellsProvider();
+
+const List<CustomNavigationDestination> destinations = [
+  CustomNavigationDestination(
+    label: AppStrings.houseOverview,
+    icon: Icon(Icons.house_sharp),
+    route: '/',
+  ),
+  CustomNavigationDestination(
+    label: AppStrings.spellsLibrary,
+    icon: Icon(Icons.flash_on),
+    route: '/spells',
+  ),
+  CustomNavigationDestination(
+    label: AppStrings.elixirsEncyclopedia,
+    icon: Icon(Icons.science),
+    route: '/elixirs',
+  ),
+];
+
+final appRouter = GoRouter(
+  routes: [
+    // HomeScreen
+    GoRoute(
+      path: '/',
+      pageBuilder: (context, state) => const MaterialPage<void>(
+        key: _pageKey,
+        child: RootLayout(
+          key: _scaffoldKey,
+          currentIndex: 0,
+          child: HomeScreen(),
+        ),
+      ),
+    ),
+
+    // Spells
+    GoRoute(
+        path: '/spells',
+        pageBuilder: (context, state) => const MaterialPage<void>(
+              key: _pageKey,
+              child: RootLayout(
+                key: _scaffoldKey,
+                currentIndex: 1,
+                child: SpellsScreen(),
+              ),
+            ),
+        routes: [
+          GoRoute(
+            path: ':id',
+            pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              child: RootLayout(
+                key: _scaffoldKey,
+                currentIndex: 1,
+                child: SpellScreen(
+                  spell:
+                      spellsProvider.getSpell(state.pathParameters['id']!)!,
+                ),
+              ),
+            ),
+          ),
+        ]),
+
+    // Elixirs
+    GoRoute(
+        path: '/elixirs',
+        pageBuilder: (context, state) => const MaterialPage<void>(
+              key: _pageKey,
+              child: RootLayout(
+                key: _scaffoldKey,
+                currentIndex: 2,
+                child: ElixirsScreen(),
+              ),
+            ),
+        routes: [
+          GoRoute(
+            path: ':id',
+            pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              child: RootLayout(
+                key: _scaffoldKey,
+                currentIndex: 2,
+                child: ElixirScreen(
+                  elixir:
+                      elixirsProvider.getElixir(state.pathParameters['id']!)!,
+                ),
+              ),
+            ),
+          ),
+        ]),
+
+    //HousesHomeScreen
+    GoRoute(
+      path: '/houses/:id',
+      pageBuilder: (context, state) => MaterialPage<void>(
+        key: state.pageKey,
+        child: RootLayout(
+          key: _scaffoldKey,
+          currentIndex: 0,
+          child: HouseScreen(
+            house: housesProvider.getHouse(state.pathParameters['id']!)!,
+          ),
+        ),
+      ),
+    ),
+  ],
+);

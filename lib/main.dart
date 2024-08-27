@@ -1,6 +1,6 @@
 import 'package:desktop_window/desktop_window.dart';
 import 'package:flutter/material.dart';
-import 'package:hyperboliq/shared/my_app.dart';
+import 'package:hyperboliq/src/shared/my_app.dart';
 import 'package:universal_platform/universal_platform.dart';
 
 Future setDesktopWindow() async {
