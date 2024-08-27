@@ -5,7 +5,6 @@ import 'package:hyperboliq/src/shared/providers/houses_provider.dart';
 import 'package:hyperboliq/src/shared/providers/spells_provider.dart';
 import 'package:hyperboliq/src/shared/widgets/root_layout.dart';
 
-
 import '../features/elixirs/presentation/screens/elixir_screen.dart';
 import '../features/elixirs/presentation/screens/elixirs_screen.dart';
 import '../features/home/presentation/screens/home_screen.dart';

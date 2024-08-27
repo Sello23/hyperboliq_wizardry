@@ -1,9 +1,5 @@
-import 'package:json_annotation/json_annotation.dart';
 import '../../../../shared/models/my_image.dart';
 
-part 'spell.g.dart';
-
-@JsonSerializable()
 class Spell {
   final String id;
   final String name;

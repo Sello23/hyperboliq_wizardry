@@ -1,9 +1,11 @@
-class Head {
+import 'package:equatable/equatable.dart';
+
+class Head extends Equatable {
   final String id;
   final String firstName;
   final String lastName;
 
-  Head({
+  const Head({
     required this.id,
     required this.firstName,
     required this.lastName,
@@ -24,4 +26,7 @@ class Head {
       'lastName': lastName,
     };
   }
+
+  @override
+  List<Object?> get props => [id, firstName, lastName];
 }

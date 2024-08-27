@@ -1,8 +1,10 @@
+import 'package:equatable/equatable.dart';
+
 import '../../../../shared/models/my_image.dart';
 import 'head.dart';
 import 'trait.dart';
 
-class House {
+class House extends Equatable {
   final String id;
   final String name;
   final String houseColours;
@@ -11,11 +13,11 @@ class House {
   final String element;
   final String ghost;
   final String commonRoom;
-  final List<Head> heads;  // Assuming Head is another class
-  final List<Trait> traits; // Assuming Trait is another class
-  final MyImage myImage; // Assuming MyImage is another class
+  final List<Head> heads;
+  final List<Trait> traits;
+  final MyImage myImage;
 
-  House({
+  const House({
     required this.id,
     required this.name,
     required this.houseColours,
@@ -64,4 +66,19 @@ class House {
       'myImage': myImage.toJson(),
     };
   }
+
+  @override
+  List<Object?> get props => [
+        id,
+        name,
+        houseColours,
+        founder,
+        animal,
+        element,
+        ghost,
+        commonRoom,
+        heads,
+        traits,
+        myImage,
+      ];
 }

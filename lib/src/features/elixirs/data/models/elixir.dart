@@ -14,7 +14,7 @@ class Elixir extends Equatable {
   final List<Inventor> inventors;
   final String? manufacturer;
 
-  Elixir({
+  const Elixir({
     required this.id,
     required this.name,
     this.effect,

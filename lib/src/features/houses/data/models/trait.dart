@@ -1,8 +1,10 @@
-class Trait {
+import 'package:equatable/equatable.dart';
+
+class Trait extends Equatable {
   final String id;
   final String name;
 
-  Trait({
+  const Trait({
     required this.id,
     required this.name,
   });
@@ -20,4 +22,7 @@ class Trait {
       'name': name,
     };
   }
+
+  @override
+  List<Object?> get props => [id, name];
 }
