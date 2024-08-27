@@ -1,21 +1,18 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:equatable/equatable.dart';
 
-part 'ingredient.g.dart';
+class Ingredient extends Equatable {
+  final String id;
+  final String name;
 
-@JsonSerializable()
-class Ingredient {
-  String id;
-  String name;
-
-  Ingredient({
+  const Ingredient({
     required this.id,
     required this.name,
   });
 
   factory Ingredient.fromJson(Map<String, dynamic> json) {
     return Ingredient(
-      id: json['id'],
-      name: json['name'],
+      id: json['id'] as String,
+      name: json['name'] as String,
     );
   }
 
@@ -25,4 +22,7 @@ class Ingredient {
       'name': name,
     };
   }
+
+  @override
+  List<Object?> get props => [id, name];
 }

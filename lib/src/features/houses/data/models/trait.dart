@@ -1,7 +1,3 @@
-import 'package:json_annotation/json_annotation.dart';
-part 'trait.g.dart';
-
-@JsonSerializable()
 class Trait {
   final String id;
   final String name;

@@ -1,12 +1,7 @@
-import 'package:hyperboliq/src/features/houses/data/models/trait.dart';
-import 'package:json_annotation/json_annotation.dart';
-
 import '../../../../shared/models/my_image.dart';
 import 'head.dart';
+import 'trait.dart';
 
-part 'house.g.dart';
-
-@JsonSerializable()
 class House {
   final String id;
   final String name;
@@ -34,7 +29,6 @@ class House {
     required this.myImage,
   });
 
-  // fromJson factory constructor
   factory House.fromJson(Map<String, dynamic> json) {
     return House(
       id: json['id'] as String,
@@ -55,7 +49,6 @@ class House {
     );
   }
 
-  // toJson method
   Map<String, dynamic> toJson() {
     return {
       'id': id,

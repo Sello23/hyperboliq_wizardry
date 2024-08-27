@@ -1,22 +1,18 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:equatable/equatable.dart';
+import 'ingredient.dart'; // Ensure this is the correct path to the Ingredient class
+import 'inventor.dart'; // Ensure this is the correct path to the Inventor class
 
-import 'ingredient.dart';
-import 'inventor.dart';
-
-part 'elixir.g.dart';
-
-@JsonSerializable()
-class Elixir {
-  String id;
-  String name;
-  String? effect;
-  String? sideEffects;
-  String? characteristics;
-  String? time;
-  String difficulty;
-  List<Ingredient> ingredients;
-  List<Inventor> inventors;
-  String? manufacturer;
+class Elixir extends Equatable {
+  final String id;
+  final String name;
+  final String? effect;
+  final String? sideEffects;
+  final String? characteristics;
+  final String? time;
+  final String difficulty;
+  final List<Ingredient> ingredients;
+  final List<Inventor> inventors;
+  final String? manufacturer;
 
   Elixir({
     required this.id,
@@ -31,25 +27,27 @@ class Elixir {
     this.manufacturer,
   });
 
+  // Manually implemented fromJson factory constructor
   factory Elixir.fromJson(Map<String, dynamic> json) {
     return Elixir(
-      id: json['id'],
-      name: json['name'],
-      effect: json['effect'],
-      sideEffects: json['sideEffects'],
-      characteristics: json['characteristics'],
-      time: json['time'],
-      difficulty: json['difficulty'],
-      ingredients: (json['ingredients'] as List)
-          .map((i) => Ingredient.fromJson(i))
+      id: json['id'] as String,
+      name: json['name'] as String,
+      effect: json['effect'] as String?,
+      sideEffects: json['sideEffects'] as String?,
+      characteristics: json['characteristics'] as String?,
+      time: json['time'] as String?,
+      difficulty: json['difficulty'] as String,
+      ingredients: (json['ingredients'] as List<dynamic>)
+          .map((e) => Ingredient.fromJson(e as Map<String, dynamic>))
           .toList(),
-      inventors: (json['inventors'] as List)
-          .map((i) => Inventor.fromJson(i))
+      inventors: (json['inventors'] as List<dynamic>)
+          .map((e) => Inventor.fromJson(e as Map<String, dynamic>))
           .toList(),
-      manufacturer: json['manufacturer'],
+      manufacturer: json['manufacturer'] as String?,
     );
   }
 
+  // Manually implemented toJson method
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -59,9 +57,23 @@ class Elixir {
       'characteristics': characteristics,
       'time': time,
       'difficulty': difficulty,
-      'ingredients': ingredients.map((i) => i.toJson()).toList(),
-      'inventors': inventors.map((i) => i.toJson()).toList(),
+      'ingredients': ingredients.map((e) => e.toJson()).toList(),
+      'inventors': inventors.map((e) => e.toJson()).toList(),
       'manufacturer': manufacturer,
     };
   }
+
+  @override
+  List<Object?> get props => [
+    id,
+    name,
+    effect,
+    sideEffects,
+    characteristics,
+    time,
+    difficulty,
+    ingredients,
+    inventors,
+    manufacturer,
+  ];
 }

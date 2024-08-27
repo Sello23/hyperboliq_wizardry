@@ -1,8 +1,3 @@
-import 'package:json_annotation/json_annotation.dart';
-
-part 'head.g.dart';
-
-@JsonSerializable()
 class Head {
   final String id;
   final String firstName;

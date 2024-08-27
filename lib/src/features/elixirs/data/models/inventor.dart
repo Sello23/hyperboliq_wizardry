@@ -1,14 +1,11 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:equatable/equatable.dart';
 
-part 'inventor.g.dart';
+class Inventor extends Equatable {
+  final String? id;
+  final String? firstName;
+  final String? lastName;
 
-@JsonSerializable()
-class Inventor {
-  String? id;
-  String? firstName;
-  String? lastName;
-
-  Inventor({
+  const Inventor({
     this.id,
     this.firstName,
     this.lastName,
@@ -16,9 +13,9 @@ class Inventor {
 
   factory Inventor.fromJson(Map<String, dynamic> json) {
     return Inventor(
-      id: json['id'],
-      firstName: json['firstName'],
-      lastName: json['lastName'],
+      id: json['id'] as String?,
+      firstName: json['firstName'] as String?,
+      lastName: json['lastName'] as String?,
     );
   }
 
@@ -29,4 +26,7 @@ class Inventor {
       'lastName': lastName,
     };
   }
+
+  @override
+  List<Object?> get props => [id, firstName, lastName];
 }
