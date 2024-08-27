@@ -12,7 +12,6 @@ import 'theme.dart';
 import 'router.dart';
 import 'package:http/http.dart' as http;
 
-
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
@@ -34,7 +33,8 @@ class _MyAppState extends State<MyApp> {
 
     // Initialize the data layer components
     final houseRemoteDataSource = HouseRemoteDataSource(http.Client());
-    final houseRepository = HouseRepositoryImpl(remoteDataSource: houseRemoteDataSource);
+    final houseRepository =
+        HouseRepositoryImpl(remoteDataSource: houseRemoteDataSource);
 
     // Initialize the GetHouses use case
     getHouses = GetHouses(houseRepository);
@@ -43,7 +43,8 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<HouseBloc>(
-      create: (context) => HouseBloc(getHouses)..add(const FetchHouses()),
+      create: (context) =>
+          HouseBloc(getHouses: getHouses)..add(const FetchHouses()),
       child: DynamicColorBuilder(
         builder: (lightDynamic, darkDynamic) => ThemeProvider(
             lightDynamic: lightDynamic,
@@ -66,7 +67,7 @@ class _MyAppState extends State<MyApp> {
                     themeMode: theme.themeMode(),
                     routeInformationParser: appRouter.routeInformationParser,
                     routeInformationProvider:
-                    appRouter.routeInformationProvider,
+                        appRouter.routeInformationProvider,
                     routerDelegate: appRouter.routerDelegate,
                   );
                 },

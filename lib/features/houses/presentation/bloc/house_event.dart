@@ -14,3 +14,12 @@ class FetchHouses extends HouseEvent {
   @override
   List<Object> get props => [];
 }
+
+class FetchHouseDetails extends HouseEvent {
+  final String id;
+
+  const FetchHouseDetails(this.id);
+
+  @override
+  List<Object> get props => [];
+}

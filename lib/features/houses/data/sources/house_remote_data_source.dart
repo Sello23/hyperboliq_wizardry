@@ -19,4 +19,15 @@ class HouseRemoteDataSource {
       throw Exception('Failed to load houses');
     }
   }
+
+  Future<House> fetchHouseDetails(String id) async {
+    final response = await client
+        .get(Uri.parse('https://wizard-world-api.herokuapp.com/Houses/$id'));
+
+    if (response.statusCode == 200) {
+      return House.fromJson(json.decode(response.body));
+    } else {
+      throw Exception('Failed to load house details');
+    }
+  }
 }

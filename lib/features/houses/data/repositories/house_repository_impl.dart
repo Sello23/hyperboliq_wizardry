@@ -11,12 +11,11 @@ class HouseRepositoryImpl implements HouseRepository {
 
   @override
   Future<List<House>> getHouses() async {
-    try {
-      final houses = await remoteDataSource.fetchHouses();
-      return houses;
-    } catch (e) {
-      // Here you can handle exceptions like logging, etc.
-      throw Exception('Failed to load houses');
-    }
+    return await remoteDataSource.fetchHouses();
+  }
+
+  @override
+  Future<House> getHouseDetails(String id) async {
+    return await remoteDataSource.fetchHouseDetails(id);
   }
 }
