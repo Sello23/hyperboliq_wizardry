@@ -108,7 +108,7 @@ class WizardWorldApiClient {
   }
 
   /// Fetches a list of [Elixir] objects from the `/Elixirs` endpoint.
-  Future<List<Elixir>> fetchElixirs() async {
+  Future<List<Elixir>> getElixirs() async {
     final elixirRequest = Uri.https(
       AppStrings.baseUrl,
       '/Elixirs',

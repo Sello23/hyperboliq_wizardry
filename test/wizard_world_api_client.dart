@@ -49,7 +49,7 @@ void main() {
         when(() => response.body).thenReturn('{}');
         when(() => httpClient.get(any())).thenAnswer((_) async => response);
         try {
-          await apiClient.fetchElixirs();
+          await apiClient.getElixirs();
         } catch (_) {}
       });
     });
