@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hyperboliq/src/shared/extensions.dart';
 
 import '../../../houses/data/models/house.dart';
+import '../../../houses/presentation/state/houses_cubit.dart';
 
 class HomeHouses extends StatelessWidget {
   const HomeHouses({
@@ -23,8 +25,7 @@ class HomeHouses extends StatelessWidget {
         children: [
           for (final house in houses) buildTile(context, house),
         ],
-      )
-          : Row(children: [
+      )   : Row(children: [
         for (final house in houses)
           Flexible(
             flex: 1,
@@ -38,7 +39,7 @@ class HomeHouses extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(house.myImage!.image),
+          image: AssetImage(house.myImage.image),
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.5),
               BlendMode.darken), // Optional: Darken the background for better text readability

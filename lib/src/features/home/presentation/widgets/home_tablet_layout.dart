@@ -1,5 +1,4 @@
 import 'package:adaptive_components/adaptive_components.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hyperboliq/src/shared/extensions.dart';
 
@@ -8,8 +7,8 @@ import '../../../../shared/widgets/brightness_toggle.dart';
 import '../../../houses/data/models/house.dart';
 import '../../home.dart';
 
-class TabletLayout extends StatelessWidget {
-  const TabletLayout({
+class HomeTabletLayout extends StatelessWidget {
+  const HomeTabletLayout({
     super.key,
     required this.houses,
   });

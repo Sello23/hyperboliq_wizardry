@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 
-import '../../data/models/house.dart';
 import '../../../../shared/widgets/adaptive_table.dart';
 import '../../data/models/trait.dart';
 
 class HouseTraits extends StatelessWidget {
-  const HouseTraits({super.key, required this.house});
+  const HouseTraits({super.key, required this.traits});
 
-  final House house;
+  final List<Trait> traits;
 
   @override
   Widget build(BuildContext context) {
     return AdaptiveTable<Trait>(
-      items: house.traits,
+      items: traits,
       breakpoint: 200,
       itemBuilder: (head, index) {
         return const ListTile(

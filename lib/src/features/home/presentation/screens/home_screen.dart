@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
         context.read<HousesCubit>().fetchHouses();
 
         return switch (state.status) {
-          HousesStatus.loading => const CircularProgressIndicator(),
+          HousesStatus.loading => const Center(child: CircularProgressIndicator(),),
           HousesStatus.success => HomeScreenLayout(houses: state.houses),
           HousesStatus.failure => const ExceptionTile(
               message: "Something went wrong",

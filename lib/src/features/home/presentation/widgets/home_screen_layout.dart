@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hyperboliq/src/features/home/presentation/widgets/tablet_layout.dart';
+import 'package:hyperboliq/src/features/home/presentation/widgets/home_tablet_layout.dart';
 import 'package:hyperboliq/src/shared/extensions.dart';
 import '../../../houses/data/models/house.dart';
 import 'mobile_layout.dart';
@@ -19,7 +19,7 @@ class HomeScreenLayout extends StatelessWidget {
         if (constraints.isMobile) {
           return MobileLayout(houses: houses);
         }
-        return TabletLayout(houses: houses);
+        return HomeTabletLayout(houses: houses);
       },
     );
   }

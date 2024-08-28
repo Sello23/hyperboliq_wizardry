@@ -5,14 +5,14 @@ import '../../data/models/house.dart';
 import '../../../../shared/widgets/adaptive_table.dart';
 
 class HouseHeads extends StatelessWidget {
-  const HouseHeads({super.key, required this.house});
+  const HouseHeads({super.key, required this.heads});
 
-  final House house;
+  final List<Head> heads;
 
   @override
   Widget build(BuildContext context) {
     return AdaptiveTable<Head>(
-      items: house.heads,
+      items: heads,
       breakpoint: 200,
       itemBuilder: (head, index) {
         return const ListTile(
