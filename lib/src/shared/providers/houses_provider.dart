@@ -9,7 +9,7 @@ class HousesProvider {
   static HousesProvider get shared => HousesProvider();
 
   List<House> get houses => [
-        House(
+        const House(
             id: '0367baf3-1cb6-4baf-bede-48e17e1cd005',
             name: 'Gryffindor',
             houseColours: 'Scarlet and gold',
@@ -18,7 +18,7 @@ class HousesProvider {
             element: 'Fire',
             ghost: 'Nearly-Headless Nick',
             commonRoom: 'Gryffindor Tower',
-            myImage: const MyImage(
+            myImage: MyImage(
               image: 'assets/images/houses/gryffindor_background.jpg',
               sourceName: 'Gryffindor',
             ),
@@ -46,7 +46,7 @@ class HousesProvider {
               Trait(
                   id: 'adf83e9f-859b-41c4-947d-b359a05f8f3c', name: 'Bravery'),
             ]),
-        House(
+        const House(
           id: '805fd37a-65ae-4fe5-b336-d767b8b7c73a',
           name: 'Ravenclaw',
           houseColours: 'Blue and bronze',
@@ -55,7 +55,7 @@ class HousesProvider {
           element: 'Air',
           ghost: 'Grey Lady',
           commonRoom: 'Ravenclaw Tower',
-          myImage: const MyImage(
+          myImage: MyImage(
             image: 'assets/images/houses/ravenclaw_background.jpg',
             sourceName: 'Ravenclaw',
           ),
@@ -98,7 +98,7 @@ class HousesProvider {
             ),
           ],
         ),
-        House(
+        const House(
           id: '85af6295-fd01-4170-a10b-963dd51dce14',
           name: 'Hufflepuff',
           houseColours: 'Yellow and black',
@@ -107,7 +107,7 @@ class HousesProvider {
           element: 'Earth',
           ghost: 'Fat Friar',
           commonRoom: 'Hufflepuff Basement',
-          myImage: const MyImage(
+          myImage: MyImage(
             image: 'assets/images/houses/hufflepuff_background.jpg',
             sourceName: 'Hufflepuff',
           ),
@@ -150,7 +150,7 @@ class HousesProvider {
             ),
           ],
         ),
-        House(
+        const House(
           id: 'a9704c47-f92e-40a4-8771-ed1899c9b9c1',
           name: 'Slytherin',
           houseColours: 'Green and silver',
@@ -159,7 +159,7 @@ class HousesProvider {
           element: 'Water',
           ghost: 'Bloody Baron',
           commonRoom: 'Slytherin Dungeon',
-          myImage: const MyImage(
+          myImage: MyImage(
             image: 'assets/images/houses/slytherin_background.jpg',
             sourceName: 'Slytherin',
           ),

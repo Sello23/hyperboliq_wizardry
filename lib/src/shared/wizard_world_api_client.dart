@@ -28,7 +28,29 @@ class WizardWorldApiClient {
   final http.Client _httpClient;
 
   /// Finds a [Spell] `/Spells?Name=(query)`.
-  Future<List<Spell>> spellsSearch(String query) async {
+  Future<List<Spell>> getSpells() async {
+    final spellRequest = Uri.https(
+      AppStrings.baseUrl,
+      '/Spells',
+    );
+
+    final spellResponse = await _httpClient.get(spellRequest);
+
+    if (spellResponse.statusCode != 200) {
+      throw SpellRequestFailure();
+    }
+
+    final spellJson = jsonDecode(spellResponse.body) as List<dynamic>;
+
+    if (spellJson.isEmpty) throw SpellNotFoundFailure();
+
+    return spellJson
+        .map((json) => Spell.fromJson(json as Map<String, dynamic>))
+        .toList();
+  }
+
+  /// Finds a [Spell] `/Spells?Name=(query)`.
+  Future<List<Spell>> searchSpells(String query) async {
     final spellRequest = Uri.https(
       AppStrings.baseUrl,
       '/Spells',

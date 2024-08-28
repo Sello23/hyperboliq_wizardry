@@ -37,7 +37,7 @@ void main() {
         when(() => response.body).thenReturn('{}');
         when(() => httpClient.get(any())).thenAnswer((_) async => response);
         try {
-          await apiClient.spellsSearch(query);
+          await apiClient.searchSpells(query);
         } catch (_) {}
       });
     });

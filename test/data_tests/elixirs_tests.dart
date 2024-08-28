@@ -7,7 +7,7 @@ void main() {
       test('returns correct Elixir object', () {
         expect(
           Elixir.fromJson(
-            <String, dynamic>{
+            const <String, dynamic>{
               'id': 'elixir1',
               'name': 'Elixir of Life',
               'effect': 'Grants immortality',

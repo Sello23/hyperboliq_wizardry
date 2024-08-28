@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hyperboliq/src/features/houses/presentation/state/houses_cubit.dart';
+import 'package:hyperboliq/src/features/houses/presentation/state/houses_state.dart';
+import '../../../../shared/widgets/exception_tile.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:adaptive_components/adaptive_components.dart';
-import 'package:hyperboliq/src/shared/extensions.dart';
-import '../../../../shared/app_strings.dart';
-import '../../../../shared/providers/houses_provider.dart';
-import '../../../../shared/widgets/brightness_toggle.dart';
-import '../../../houses/data/models/house.dart';
-import '../widgets/home_highlight.dart';
-import '../widgets/home_houses.dart';
+import '../widgets/home_screen_layout.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -19,87 +16,22 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    final HousesProvider housesProvider = HousesProvider();
-    final List<House> houses = housesProvider.houses;
+    return BlocBuilder<HousesCubit, HousesState>(
+      builder: (BuildContext context, HousesState state) {
+        context.read<HousesCubit>().fetchHouses();
 
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        if (constraints.isMobile) {
-          return DefaultTabController(
-            length: 1,
-            child: Scaffold(
-              appBar: AppBar(
-                centerTitle: false,
-                title: const Text(AppStrings.welcomeMessage),
-                actions: const [BrightnessToggle()],
-                bottom: const TabBar(
-                  isScrollable: true,
-                  tabs: [
-                    Tab(text: AppStrings.homeScreenTitle),
-                  ],
-                ),
-              ),
-              body: LayoutBuilder(
-                builder: (context, constraints) => TabBarView(
-                  children: [
-                    SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          const HousesHighlight(),
-                          HomeHouses(
-                            houses: houses,
-                            constraints: constraints,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+        return switch (state.status) {
+          HousesStatus.loading => const CircularProgressIndicator(),
+          HousesStatus.success => HomeScreenLayout(houses: state.houses),
+          HousesStatus.failure => const ExceptionTile(
+              message: "Something went wrong",
+              iconShown: Icons.error,
             ),
-          );
-        }
-        return Scaffold(
-          body: SingleChildScrollView(
-            child: AdaptiveColumn(
-              children: [
-                AdaptiveContainer(
-                  columnSpan: 12,
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 25, 20, 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: Text(
-                            AppStrings.welcomeMessage,
-                            style: context.displaySmall,
-                          ),
-                        ),
-                        const SizedBox(width: 20),
-                        const BrightnessToggle(),
-                      ],
-                    ),
-                  ),
-                ),
-                AdaptiveContainer(
-                  columnSpan: 12,
-                  child: Column(
-                    children: [
-                      const HousesHighlight(),
-                      LayoutBuilder(
-                        builder: (context, constraints) => HomeHouses(
-                          houses: houses,
-                          constraints: constraints,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+          HousesStatus.offline => const ExceptionTile(
+              message: "Device offline",
+              iconShown: Icons.wifi_off,
             ),
-          ),
-        );
+        };
       },
     );
   }

@@ -16,7 +16,7 @@ void main() {
     spellsRepository = SpellsRepository(spellsApiClient: mockApiClient);
   });
 
-  group('spellsSearch', () {
+  group('searchSpells', () {
     const query = 'Op';
     final spellList = [
       Spell(
@@ -33,20 +33,20 @@ void main() {
     ];
 
     test('returns a list of Spells on successful API call', () async {
-      when(() => mockApiClient.spellsSearch(any())).thenAnswer(
+      when(() => mockApiClient.searchSpells(any())).thenAnswer(
             (_) async => spellList,
       );
 
-      final result = await spellsRepository.spellsSearch(query);
+      final result = await spellsRepository.searchSpells(query);
 
       expect(result, spellList);
-      verify(() => mockApiClient.spellsSearch(query)).called(1);
+      verify(() => mockApiClient.searchSpells(query)).called(1);
     });
 
     test('throws an exception when API call fails', () async {
-      when(() => mockApiClient.spellsSearch(any())).thenThrow(Exception('API error'));
+      when(() => mockApiClient.searchSpells(any())).thenThrow(Exception('API error'));
 
-      expect(() => spellsRepository.spellsSearch(query), throwsException);
+      expect(() => spellsRepository.searchSpells(query), throwsException);
     });
   });
 

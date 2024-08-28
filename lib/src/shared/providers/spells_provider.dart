@@ -144,7 +144,6 @@ class SpellsProvider {
             light: 'None',
             creator: null,
             spellImage: images()[Random().nextInt(images().length - 1)]),
-        // Add more spells as needed...
       ];
 
   Spell? getSpell(String id) {

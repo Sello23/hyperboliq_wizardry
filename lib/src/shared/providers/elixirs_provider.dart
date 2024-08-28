@@ -3,12 +3,11 @@ import 'package:collection/collection.dart';
 import '../../features/elixirs/data/models/elixir.dart';
 import '../../features/elixirs/data/models/ingredient.dart';
 
-
 class ElixirsProvider {
   static ElixirsProvider get shared => ElixirsProvider();
 
   List<Elixir> get elixirs => [
-    Elixir(
+    const Elixir(
         id: '0106fb32-b00d-4d70-9841-4b7c2d2cca71',
         name: 'Fergus Fungal Budge',
         effect: 'Treats ringworm, fungicide',
@@ -33,7 +32,7 @@ class ElixirsProvider {
         inventors: [],
         manufacturer: null
     ),
-    Elixir(
+    const Elixir(
         id: '021b40b3-68ba-4fde-a595-dbb07500674d',
         name: 'Manegro Elixir',
         effect: 'Rapid hair growth',
@@ -45,7 +44,7 @@ class ElixirsProvider {
         inventors: [],
         manufacturer: null
     ),
-    Elixir(
+    const Elixir(
         id: 'd440ff59-ac97-4e1b-927e-6c6923b10ee2',
         name: 'Polyjuice Elixir',
         effect: 'Allows a human drinker to temporarily assume the form of another person',
@@ -72,7 +71,7 @@ class ElixirsProvider {
         manufacturer: null
     ),
     // Additional Elixirs
-    Elixir(
+    const Elixir(
         id: '1a2b3c4d-5e6f-7g8h-9i0j-klmnopqrstuv',
         name: 'Invisibility Potion',
         effect: 'Grants temporary invisibility to the drinker',
@@ -88,7 +87,7 @@ class ElixirsProvider {
         inventors: [],
         manufacturer: null
     ),
-    Elixir(
+    const Elixir(
         id: '2a3b4c5d-6e7f-8g9h-0i1j-klmnopqrstuv',
         name: 'Muffling Draught',
         effect: 'Prevents the drinker from being overheard',
@@ -104,7 +103,7 @@ class ElixirsProvider {
         inventors: [],
         manufacturer: null
     ),
-    Elixir(
+    const Elixir(
         id: '3a4b5c6d-7e8f-9g0h-1i2j-klmnopqrstuv',
         name: 'Antidote to Petrification',
         effect: 'Reverses the effects of petrification spells',
@@ -120,7 +119,7 @@ class ElixirsProvider {
         inventors: [],
         manufacturer: null
     ),
-    Elixir(
+    const Elixir(
         id: '4a5b6c7d-8e9f-0g1h-2i3j-klmnopqrstuv',
         name: 'Dragonfire Elixir',
         effect: 'Allows the drinker to breathe fire',
@@ -136,7 +135,7 @@ class ElixirsProvider {
         inventors: [],
         manufacturer: null
     ),
-    Elixir(
+    const Elixir(
         id: '5a6b7c8d-9e0f-1g2h-3i4j-klmnopqrstuv',
         name: 'Wit-Sharpening Potion',
         effect: 'Temporarily increases intelligence and mental acuity',
@@ -152,7 +151,7 @@ class ElixirsProvider {
         inventors: [],
         manufacturer: null
     ),
-    Elixir(
+    const Elixir(
         id: '6a7b8c9d-0e1f-2g3h-4i5j-klmnopqrstuv',
         name: 'Elixir of Euphoria',
         effect: 'Causes intense happiness and giddiness',

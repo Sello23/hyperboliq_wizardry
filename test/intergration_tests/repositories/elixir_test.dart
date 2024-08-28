@@ -18,7 +18,7 @@ void main() {
   //Elixirs
   group('getElixirs', () {
     final elixirList = [
-      Elixir(
+      const Elixir(
         id: 'elixir1',
         name: 'Elixir of Life',
         effect: 'Grants immortality',
@@ -51,7 +51,7 @@ void main() {
   });
 
   group('getElixir', () {
-    final elixir = Elixir(
+    const elixir = Elixir(
       id: 'elixir1',
       name: 'Elixir of Life',
       effect: 'Grants immortality',

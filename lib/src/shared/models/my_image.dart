@@ -1,7 +1,3 @@
-import 'package:json_annotation/json_annotation.dart';
-part 'my_image.g.dart';
-
-@JsonSerializable()
 class MyImage {
   const MyImage({
     required this.image,

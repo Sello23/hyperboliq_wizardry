@@ -7,8 +7,12 @@ class SpellsRepository {
 
   final WizardWorldApiClient _spellsApiClient;
 
-  Future<List<Spell>> spellsSearch(String query) async {
-    return await _spellsApiClient.spellsSearch(query);
+  Future<List<Spell>> searchSpells(String query) async {
+    return await _spellsApiClient.searchSpells(query);
+  }
+
+  Future<List<Spell>> getSpells() async {
+    return await _spellsApiClient.getSpells();
   }
 
   Future<Spell> getSpell(String id) async {

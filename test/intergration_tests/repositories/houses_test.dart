@@ -18,7 +18,7 @@ void main() {
 
   group('getHouses', () {
     final houseList = [
-      House(
+      const House(
         id: 'house1',
         name: 'Gryffindor',
         houseColours: 'Red and Gold',
@@ -29,7 +29,7 @@ void main() {
         commonRoom: 'Gryffindor Tower',
         heads: [],
         traits: [],
-        myImage: const MyImage(image: 'gryffindor.png', sourceName: 'Wizarding World'),
+        myImage: MyImage(image: 'gryffindor.png', sourceName: 'Wizarding World'),
       ),
     ];
 
@@ -52,7 +52,7 @@ void main() {
   });
 
   group('getHouse', () {
-    final house = House(
+    const house = House(
       id: 'house1',
       name: 'Gryffindor',
       houseColours: 'Red and Gold',
@@ -63,7 +63,7 @@ void main() {
       commonRoom: 'Gryffindor Tower',
       heads: [],
       traits: [],
-      myImage: const MyImage(image: 'gryffindor.png', sourceName: 'Wizarding World'),
+      myImage: MyImage(image: 'gryffindor.png', sourceName: 'Wizarding World'),
     );
 
     test('returns a House on successful API call', () async {

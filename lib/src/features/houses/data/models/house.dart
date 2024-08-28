@@ -15,7 +15,7 @@ class House extends Equatable {
   final String commonRoom;
   final List<Head> heads;
   final List<Trait> traits;
-  final MyImage myImage;
+  final MyImage? myImage;
 
   const House({
     required this.id,
@@ -28,7 +28,7 @@ class House extends Equatable {
     required this.commonRoom,
     required this.heads,
     required this.traits,
-    required this.myImage,
+    this.myImage,
   });
 
   factory House.fromJson(Map<String, dynamic> json) {
@@ -47,7 +47,6 @@ class House extends Equatable {
       traits: (json['traits'] as List<dynamic>)
           .map((trait) => Trait.fromJson(trait as Map<String, dynamic>))
           .toList(),
-      myImage: MyImage.fromJson(json['myImage'] as Map<String, dynamic>),
     );
   }
 
@@ -63,7 +62,6 @@ class House extends Equatable {
       'commonRoom': commonRoom,
       'heads': heads.map((head) => head.toJson()).toList(),
       'traits': traits.map((trait) => trait.toJson()).toList(),
-      'myImage': myImage.toJson(),
     };
   }
 

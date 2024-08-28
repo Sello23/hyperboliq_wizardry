@@ -1,6 +1,7 @@
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:hyperboliq/src/features/houses/domain/repository/houses_repository.dart';
 
+import '../../../../shared/wizard_world_api_client.dart';
 import 'houses_state.dart';
 
 class HousesCubit extends HydratedCubit<HousesState> {
@@ -19,8 +20,12 @@ class HousesCubit extends HydratedCubit<HousesState> {
         status: HousesStatus.success,
         houses: houses,
       ));
-    } catch (_) {
+    }
+    on HouseNotFoundFailure{
       emit(state.copyWith(status: HousesStatus.failure));
+    }
+    catch (_) {
+      emit(state.copyWith(status: HousesStatus.offline));
     }
   }
 
@@ -33,8 +38,12 @@ class HousesCubit extends HydratedCubit<HousesState> {
         status: HousesStatus.success,
         houses: [house],
       ));
-    } catch (_) {
+    }
+    on HouseNotFoundFailure{
       emit(state.copyWith(status: HousesStatus.failure));
+    }
+    catch (_) {
+      emit(state.copyWith(status: HousesStatus.offline));
     }
   }
 

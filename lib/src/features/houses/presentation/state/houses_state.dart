@@ -2,21 +2,23 @@ import 'package:equatable/equatable.dart';
 
 import '../../data/models/house.dart';
 
-enum HousesStatus { initial, loading, success, failure }
+enum HousesStatus {loading, success, failure, offline }
 
 extension HousesStatusX on HousesStatus {
-  bool get isInitial => this == HousesStatus.initial;
 
   bool get isLoading => this == HousesStatus.loading;
 
   bool get isSuccess => this == HousesStatus.success;
 
   bool get isFailure => this == HousesStatus.failure;
+
+  bool get isOffline => this == HousesStatus.offline;
+
 }
 
 final class HousesState extends Equatable {
   const HousesState({
-    this.status = HousesStatus.initial,
+    this.status = HousesStatus.loading,
     required this.houses,
   });
 
@@ -46,8 +48,7 @@ final class HousesState extends Equatable {
   static HousesState fromJson(Map<String, dynamic> json) {
     return HousesState(
       status: HousesStatus.values.firstWhere(
-        (e) => e.toString().split('.').last == json['status'],
-        orElse: () => HousesStatus.initial,
+        (e) => e.toString().split('.').last == json['status']
       ),
       houses: (json['houses'] as List)
           .map((houseJson) => House.fromJson(houseJson))
