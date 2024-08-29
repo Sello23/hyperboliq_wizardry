@@ -1,8 +1,8 @@
 import '../../../../shared/wizard_world_api_client.dart';
 import '../../data/models/elixir.dart';
 
-class ElixirRepository {
-  ElixirRepository({WizardWorldApiClient? elixirApiClient})
+class ElixirsRepository {
+  ElixirsRepository({WizardWorldApiClient? elixirApiClient})
       : _elixirApiClient = elixirApiClient ?? WizardWorldApiClient();
 
   final WizardWorldApiClient _elixirApiClient;

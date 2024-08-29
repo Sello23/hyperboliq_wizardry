@@ -17,7 +17,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
 
-
     return BlocBuilder<HousesCubit, HousesState>(
       builder: (BuildContext context, HousesState state) {
         return switch (state.status) {

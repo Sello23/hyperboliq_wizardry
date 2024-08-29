@@ -40,7 +40,7 @@ class SpellScreenLayout extends StatelessWidget {
                     final spell = spells[index];
                     return GestureDetector(
                         child: ImageTile(
-                          image: spell.spellImage!.image,
+                          image: spell.image,
                           title: spell.name,
                           subtitle: spell.effect,
                         ),

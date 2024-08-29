@@ -1,21 +1,21 @@
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 import '../../../../shared/wizard_world_api_client.dart';
-import '../../domain/repository/elixir_repository.dart';
+import '../../domain/repository/elixirs_repository.dart';
 import 'elixirs_state.dart';
 
 class ElixirsCubit extends HydratedCubit<ElixirsState> {
-  ElixirsCubit({required ElixirRepository elixirRepository})
-      : _elixirRepository = elixirRepository, super(const ElixirsState(elixirs: []));
+  ElixirsCubit({required ElixirsRepository elixirsRepository})
+      : _elixirsRepository = elixirsRepository, super(const ElixirsState(elixirs: []));
 
-  final ElixirRepository _elixirRepository;
+  final ElixirsRepository _elixirsRepository;
 
   // Fetch elixirs and update the state
   Future<void> fetchElixirs() async {
     emit(state.copyWith(status: ElixirsStatus.loading));
 
     try {
-      final elixirs = await _elixirRepository.getElixirs();
+      final elixirs = await _elixirsRepository.getElixirs();
       emit(state.copyWith(
         status: ElixirsStatus.success,
         elixirs: elixirs,
@@ -33,7 +33,7 @@ class ElixirsCubit extends HydratedCubit<ElixirsState> {
     emit(state.copyWith(status: ElixirsStatus.loading));
 
     try {
-      final elixir = await _elixirRepository.getElixir(id);
+      final elixir = await _elixirsRepository.getElixir(id);
       emit(state.copyWith(
         status: ElixirsStatus.success,
         elixirs: [elixir],

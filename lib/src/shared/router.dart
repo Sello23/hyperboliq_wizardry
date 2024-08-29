@@ -1,20 +1,25 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hyperboliq/src/shared/providers/elixirs_provider.dart';
-import 'package:hyperboliq/src/shared/providers/spells_provider.dart';
 import 'package:hyperboliq/src/shared/widgets/root_layout.dart';
 
 import '../features/elixirs/data/models/elixir.dart';
+import '../features/elixirs/domain/repository/elixirs_repository.dart';
 import '../features/elixirs/presentation/screens/elixir_screen.dart';
 import '../features/elixirs/presentation/screens/elixirs_screen.dart';
+import '../features/elixirs/presentation/state/elixirs_cubit.dart';
 import '../features/home/presentation/screens/home_screen.dart';
 import '../features/houses/data/models/house.dart';
+import '../features/houses/domain/repository/houses_repository.dart';
 import '../features/houses/presentation/screens/house_screen.dart';
+import '../features/houses/presentation/state/houses_cubit.dart';
 import '../features/spells/data/models/spell.dart';
+import '../features/spells/domain/repository/spells_repository.dart';
 import '../features/spells/presentation/screens/spell_screen.dart';
 import '../features/spells/presentation/screens/spells_screen.dart';
+import '../features/spells/presentation/state/spells_cubit.dart';
 import 'app_strings.dart';
 import 'models/custom_navigation_destination.dart';
 
@@ -44,15 +49,21 @@ final appRouter = GoRouter(
 
     //Home screen
     GoRoute(
-        path: '/',
-        pageBuilder: (context, state) => const MaterialPage<void>(
-              key: _pageKey,
-              child: RootLayout(
-                key: _scaffoldKey,
-                currentIndex: 0,
-                child: HomeScreen(),
-              ),
-            )),
+      path: '/',
+      pageBuilder: (context, state) => MaterialPage<void>(
+        key: _pageKey,
+        child: BlocProvider(
+          create: (context) => HousesCubit(
+            housesRepository: HousesRepository(),
+          )..fetchHouses(),
+          child: const RootLayout(
+            key: _scaffoldKey,
+            currentIndex: 0,
+            child: HomeScreen(),
+          ),
+        ),
+      ),
+    ),
 
     GoRoute(
       path: '/houses/:id',
@@ -75,15 +86,20 @@ final appRouter = GoRouter(
 
     // Spells screen
     GoRoute(
-        path: '/spells',
-        pageBuilder: (context, state) => const MaterialPage<void>(
-              key: _pageKey,
-              child: RootLayout(
-                key: _scaffoldKey,
-                currentIndex: 1,
-                child: SpellsScreen(),
-              ),
-            ),
+      path: '/spells',
+      pageBuilder: (context, state) => MaterialPage<void>(
+        key: _pageKey,
+        child: BlocProvider(
+          create: (context) => SpellsCubit(
+            spellsRepository: SpellsRepository(),
+          )..fetchSpells(),
+          child: const RootLayout(
+            key: _scaffoldKey,
+            currentIndex: 1,
+            child: SpellsScreen(),
+          ),
+        ),
+      ),
     ),
 
     GoRoute(
@@ -105,17 +121,21 @@ final appRouter = GoRouter(
       },
     ),
 
-    // Elixirs
     GoRoute(
-        path: '/elixirs',
-        pageBuilder: (context, state) => const MaterialPage<void>(
-              key: _pageKey,
-              child: RootLayout(
-                key: _scaffoldKey,
-                currentIndex: 2,
-                child: ElixirsScreen(),
-              ),
-            ),
+      path: '/elixirs',
+      pageBuilder: (context, state) => MaterialPage<void>(
+        key: _pageKey,
+        child: BlocProvider(
+          create: (context) => ElixirsCubit(
+            elixirsRepository: ElixirsRepository(),
+          )..fetchElixirs(),
+          child: const RootLayout(
+            key: _scaffoldKey,
+            currentIndex: 2,
+            child: ElixirsScreen(),
+          ),
+        ),
+      ),
     ),
 
     GoRoute(

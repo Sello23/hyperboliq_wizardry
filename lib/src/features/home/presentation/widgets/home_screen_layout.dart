@@ -17,7 +17,7 @@ class HomeScreenLayout extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.isMobile) {
-          return MobileLayout(houses: houses);
+          return HomeMobileLayout(houses: houses);
         }
         return HomeTabletLayout(houses: houses);
       },

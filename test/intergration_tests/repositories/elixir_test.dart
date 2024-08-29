@@ -7,12 +7,12 @@ import 'package:hyperboliq/src/shared/wizard_world_api_client.dart';
 class MockWizardWorldApiClient extends Mock implements WizardWorldApiClient {}
 
 void main() {
-  late ElixirRepository elixirRepository;
+  late ElixirsRepository elixirRepository;
   late MockWizardWorldApiClient mockApiClient;
 
   setUp(() {
     mockApiClient = MockWizardWorldApiClient();
-    elixirRepository = ElixirRepository(elixirApiClient: mockApiClient);
+    elixirRepository = ElixirsRepository(elixirApiClient: mockApiClient);
   });
 
   //Elixirs

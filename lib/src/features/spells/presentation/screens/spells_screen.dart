@@ -12,8 +12,6 @@ class SpellsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SpellsCubit, SpellsState>(
         builder: (BuildContext context, SpellsState state) {
-          context.read<SpellsCubit>().fetchSpells();
-
           return switch (state.status){
             SpellsStatus.loading => const Center(child: CircularProgressIndicator(),),
             SpellsStatus.success => SpellScreenLayout(spells: state.spells),

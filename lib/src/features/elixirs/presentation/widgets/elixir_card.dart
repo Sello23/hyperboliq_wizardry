@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hyperboliq/src/shared/extensions.dart';
@@ -11,8 +13,9 @@ class ElixirCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final elixirJson = jsonEncode(elixir.toJson());
     return GestureDetector(
-      onTap: () => GoRouter.of(context).go('/elixirs/${elixir.id}'),
+      onTap: () => GoRouter.of(context).go('/elixirs/${elixir.id}?data=$elixirJson'),
       child: Card(
         child: Center(
           child: Text(

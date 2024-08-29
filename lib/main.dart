@@ -1,9 +1,6 @@
 import 'package:desktop_window/desktop_window.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hyperboliq/src/features/houses/domain/repository/houses_repository.dart';
-import 'package:hyperboliq/src/features/houses/presentation/state/houses_cubit.dart';
 import 'package:hyperboliq/src/shared/my_app.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:universal_platform/universal_platform.dart';
@@ -28,11 +25,6 @@ Future<void> main() async {
   );
 
   runApp(
-    BlocProvider(
-      create: (context) => HousesCubit(
-        housesRepository: HousesRepository(),
-      )..fetchHouses(),
-      child: const MyApp(),
-    ),
+    const MyApp(),
   );
 }

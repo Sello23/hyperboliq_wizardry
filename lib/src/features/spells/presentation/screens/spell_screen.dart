@@ -37,7 +37,7 @@ class SpellScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           ClippedImage(
-                            spell.getSpellImage(),
+                            spell.image,
                             fit: BoxFit.cover,
                           ),
                           Expanded(
@@ -89,7 +89,7 @@ class SpellScreen extends StatelessWidget {
                         SizedBox(
                           height: 300,
                           child: ClippedImage(
-                            spell.spellImage!.image,
+                            spell.image,
                             fit: BoxFit.cover,
                           ),
                         ),

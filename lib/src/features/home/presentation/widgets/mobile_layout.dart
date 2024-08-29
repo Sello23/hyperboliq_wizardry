@@ -5,8 +5,8 @@ import '../../../../shared/widgets/brightness_toggle.dart';
 import '../../../houses/data/models/house.dart';
 import '../../home.dart';
 
-class MobileLayout extends StatelessWidget {
-  const MobileLayout({
+class HomeMobileLayout extends StatelessWidget {
+  const HomeMobileLayout({
     super.key,
     required this.houses,
   });

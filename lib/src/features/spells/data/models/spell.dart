@@ -1,7 +1,5 @@
 import 'dart:math';
 
-import '../../../../shared/models/my_image.dart';
-
 class Spell {
   final String id;
   final String name;
@@ -11,7 +9,7 @@ class Spell {
   final String type;
   final String light;
   final String? creator;
-  final MyImage? spellImage;
+  final String? spellImage;
 
   Spell({
     required this.id,
@@ -22,7 +20,7 @@ class Spell {
     required this.type,
     required this.light,
     this.creator,
-    required this.spellImage,
+    this.spellImage
   });
 
   factory Spell.fromJson(Map<String, dynamic> json) {
@@ -34,8 +32,7 @@ class Spell {
       canBeVerbal: json['canBeVerbal'] as bool?,
       type: json['type'] as String,
       light: json['light'] as String,
-      creator: json['creator'] as String?,
-      spellImage: MyImage?.fromJson(json['spellImage'] as Map<String, dynamic>),
+      creator: json['creator'] as String?
     );
   }
 
@@ -49,11 +46,10 @@ class Spell {
       'type': type,
       'light': light,
       'creator': creator,
-      'spellImage': spellImage?.toJson(),
     };
   }
 
-  static List<String> images() {
+  static List<String> _spellImages() {
     return [
       'assets/images/spells/spell1.png',
       'assets/images/spells/spell2.png',
@@ -68,7 +64,6 @@ class Spell {
     ];
   }
 
-  String getSpellImage() {
-    return images()[Random().nextInt(images().length - 1)];
-  }
+  String get image => _spellImages()[Random().nextInt(_spellImages().length - 1)];
+
 }

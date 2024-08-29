@@ -21,7 +21,7 @@ class HouseCard extends StatelessWidget {
             SizedBox(
               width: dimens.maxWidth * 0.4,
               child: Image.asset(
-                house.myImage!.image,
+                house.imagePath,
                 fit: BoxFit.cover,
               ),
             ),
