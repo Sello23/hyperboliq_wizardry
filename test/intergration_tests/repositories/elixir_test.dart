@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hyperboliq/src/features/elixirs/data/models/elixir.dart';
-import 'package:hyperboliq/src/features/elixirs/domain/repository/elixir_repository.dart';
+import 'package:hyperboliq/src/features/elixirs/domain/repository/elixirs_repository.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:hyperboliq/src/shared/wizard_world_api_client.dart';
 

@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hyperboliq/src/features/spells/domain/repository/spells_repository.dart';
-import 'package:hyperboliq/src/shared/models/my_image.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:hyperboliq/src/shared/wizard_world_api_client.dart';
 import 'package:hyperboliq/src/features/spells/data/models/spell.dart';
@@ -28,7 +27,6 @@ void main() {
         type: 'Charm',
         light: 'Red',
         creator: 'Unknown',
-        spellImage: const MyImage(image: 'expelliarmus.png', sourceName: 'Wizarding World'),
       ),
     ];
 
@@ -60,7 +58,6 @@ void main() {
       type: 'Charm',
       light: 'Red',
       creator: 'Unknown',
-      spellImage: const MyImage(image: 'expelliarmus.png', sourceName: 'Wizarding World'),
     );
 
     test('returns a Spell on successful API call', () async {

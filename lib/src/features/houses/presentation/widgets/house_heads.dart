@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../data/models/head.dart';
-import '../../data/models/house.dart';
 import '../../../../shared/widgets/adaptive_table.dart';
 
 class HouseHeads extends StatelessWidget {
