@@ -23,7 +23,7 @@ class HousesTabletLayout extends StatelessWidget {
         SizedBox(
           height: 300,
           child: ClippedImage(
-            house.myImage.image,
+            house.imagePath,
             fit: BoxFit.cover,
           ),
         ),

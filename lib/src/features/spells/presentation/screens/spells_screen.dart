@@ -1,55 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-
-import '../../../../shared/providers/spells_provider.dart';
-import '../../../../shared/widgets/image_tile.dart';
-import '../../data/models/spell.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hyperboliq/src/features/spells/presentation/screens/spells_screen_layout.dart';
+import 'package:hyperboliq/src/features/spells/presentation/state/spells_cubit.dart';
+import 'package:hyperboliq/src/features/spells/presentation/state/spells_state.dart';
+import 'package:hyperboliq/src/shared/widgets/exception_tile.dart';
 
 class SpellsScreen extends StatelessWidget {
   const SpellsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    SpellsProvider spellsProvider = SpellsProvider();
-    List<Spell> spells = spellsProvider.spells;
+    return BlocBuilder<SpellsCubit, SpellsState>(
+        builder: (BuildContext context, SpellsState state) {
+          context.read<SpellsCubit>().fetchSpells();
 
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return Scaffold(
-          primary: false,
-          appBar: AppBar(
-            title: const Text('Spells'),
-            toolbarHeight: kToolbarHeight * 2,
-          ),
-          body: Column(
-            children: [
-              Expanded(
-                child: GridView.builder(
-                  padding: const EdgeInsets.all(15),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: (constraints.maxWidth ~/ 175).toInt(),
-                    childAspectRatio: 0.70,
-                    mainAxisSpacing: 10,
-                    crossAxisSpacing: 10,
-                  ),
-                  itemCount: spells.length,
-                  itemBuilder: (context, index) {
-                    final spell = spells[index];
-                    return GestureDetector(
-                        child: ImageTile(
-                          image: spell.spellImage.image,
-                          title: spell.name,
-                          subtitle: spell.effect,
-                        ),
-                        onTap: () =>
-                            GoRouter.of(context).go('/spells/${spell.id}'));
-                  },
-                ),
-              ),
-            ],
-          ),
-        );
-      },
+          return switch (state.status){
+            SpellsStatus.loading => const Center(child: CircularProgressIndicator(),),
+            SpellsStatus.success => SpellScreenLayout(spells: state.spells),
+          SpellsStatus.failure => const ExceptionTile(message: "Something went wrong",
+            iconShown: Icons.error,),
+          SpellsStatus.offline => const ExceptionTile(
+            message: "Device offline",
+            iconShown: Icons.wifi_off,),
+          };
+        }
     );
   }
 }

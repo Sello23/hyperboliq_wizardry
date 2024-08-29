@@ -18,10 +18,6 @@ class HousesProvider {
             element: 'Fire',
             ghost: 'Nearly-Headless Nick',
             commonRoom: 'Gryffindor Tower',
-            myImage: MyImage(
-              image: 'assets/images/houses/gryffindor_background.jpg',
-              sourceName: 'Gryffindor',
-            ),
             heads: [
               Head(
                   id: '530da97d-5a83-4ea6-bc15-790edf5b5efc',
@@ -55,10 +51,6 @@ class HousesProvider {
           element: 'Air',
           ghost: 'Grey Lady',
           commonRoom: 'Ravenclaw Tower',
-          myImage: MyImage(
-            image: 'assets/images/houses/ravenclaw_background.jpg',
-            sourceName: 'Ravenclaw',
-          ),
           heads: [
             Head(
               id: '102ac5fc-db71-4055-8250-bc238cffb3d9',
@@ -107,10 +99,6 @@ class HousesProvider {
           element: 'Earth',
           ghost: 'Fat Friar',
           commonRoom: 'Hufflepuff Basement',
-          myImage: MyImage(
-            image: 'assets/images/houses/hufflepuff_background.jpg',
-            sourceName: 'Hufflepuff',
-          ),
           heads: [
             Head(
               id: 'a593e800-95dc-47ab-9243-6ac98d2f6ab4',
@@ -159,10 +147,6 @@ class HousesProvider {
           element: 'Water',
           ghost: 'Bloody Baron',
           commonRoom: 'Slytherin Dungeon',
-          myImage: MyImage(
-            image: 'assets/images/houses/slytherin_background.jpg',
-            sourceName: 'Slytherin',
-          ),
           heads: [
             Head(
               id: '36ba2ceb-6b6f-48a3-b512-9c1e66321eff',

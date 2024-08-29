@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hyperboliq/src/features/houses/domain/repository/houses_repository.dart';
-import 'package:hyperboliq/src/shared/models/my_image.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:hyperboliq/src/shared/wizard_world_api_client.dart';
 import 'package:hyperboliq/src/features/houses/data/models/house.dart';
@@ -29,7 +28,6 @@ void main() {
         commonRoom: 'Gryffindor Tower',
         heads: [],
         traits: [],
-        myImage: MyImage(image: 'gryffindor.png', sourceName: 'Wizarding World'),
       ),
     ];
 
@@ -63,7 +61,6 @@ void main() {
       commonRoom: 'Gryffindor Tower',
       heads: [],
       traits: [],
-      myImage: MyImage(image: 'gryffindor.png', sourceName: 'Wizarding World'),
     );
 
     test('returns a House on successful API call', () async {

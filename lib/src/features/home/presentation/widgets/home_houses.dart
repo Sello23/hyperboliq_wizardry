@@ -1,10 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hyperboliq/src/shared/extensions.dart';
 
 import '../../../houses/data/models/house.dart';
-import '../../../houses/presentation/state/houses_cubit.dart';
 
 class HomeHouses extends StatelessWidget {
   const HomeHouses({
@@ -39,7 +39,7 @@ class HomeHouses extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(house.myImage.image),
+          image: AssetImage(house.imagePath),
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.5),
               BlendMode.darken), // Optional: Darken the background for better text readability
@@ -56,7 +56,10 @@ class HomeHouses extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
           child: Text('Founder: ${house.founder}', style: context.labelMedium),
         ),
-        onTap: () => GoRouter.of(context).go('/houses/${house.id}'),
+        onTap: (){
+          final houseJson = jsonEncode(house.toJson());
+          GoRouter.of(context).go('/houses/${house.id}?data=$houseJson');
+        }
       ),
     );
   }

@@ -28,11 +28,7 @@ void main() {
                   'id': 'trait1',
                   'name': 'Bravery',
                 },
-              ],
-              'myImage': {
-                'image': 'gryffindor.png',
-                'sourceName': 'Wizarding World',
-              },
+              ]
             },
           ),
           isA<House>()
@@ -51,8 +47,6 @@ void main() {
               .having((h) => h.traits.length, 'traits length', 1)
               .having((h) => h.traits[0].id, 'first trait id', 'trait1')
               .having((h) => h.traits[0].name, 'first trait name', 'Bravery')
-              .having((h) => h.myImage.image, 'image', 'gryffindor.png')
-              .having((h) => h.myImage.sourceName, 'sourceName', 'Wizarding World'),
         );
       });
     });

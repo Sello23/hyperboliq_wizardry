@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hyperboliq/src/shared/extensions.dart';
@@ -38,7 +37,7 @@ class SpellScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           ClippedImage(
-                            spell.spellImage.image,
+                            spell.getSpellImage(),
                             fit: BoxFit.cover,
                           ),
                           Expanded(
@@ -90,7 +89,7 @@ class SpellScreen extends StatelessWidget {
                         SizedBox(
                           height: 300,
                           child: ClippedImage(
-                            spell.spellImage.image,
+                            spell.spellImage!.image,
                             fit: BoxFit.cover,
                           ),
                         ),

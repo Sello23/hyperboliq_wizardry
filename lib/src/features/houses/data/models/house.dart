@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 
-import '../../../../shared/models/my_image.dart';
 import 'head.dart';
 import 'trait.dart';
 
@@ -15,21 +14,20 @@ class House extends Equatable {
   final String commonRoom;
   final List<Head> heads;
   final List<Trait> traits;
-  final MyImage myImage;
+  final String? image;
 
-  const House({
-    required this.id,
-    required this.name,
-    required this.houseColours,
-    required this.founder,
-    required this.animal,
-    required this.element,
-    required this.ghost,
-    required this.commonRoom,
-    required this.heads,
-    required this.traits,
-    required this.myImage,
-  });
+  const House(
+      {required this.id,
+      required this.name,
+      required this.houseColours,
+      required this.founder,
+      required this.animal,
+      required this.element,
+      required this.ghost,
+      required this.commonRoom,
+      required this.heads,
+      required this.traits,
+      this.image});
 
   factory House.fromJson(Map<String, dynamic> json) {
     return House(
@@ -47,7 +45,6 @@ class House extends Equatable {
       traits: (json['traits'] as List<dynamic>)
           .map((trait) => Trait.fromJson(trait as Map<String, dynamic>))
           .toList(),
-      myImage: MyImage.fromJson(json['myImage'] as Map<String, dynamic>),
     );
   }
 
@@ -63,7 +60,6 @@ class House extends Equatable {
       'commonRoom': commonRoom,
       'heads': heads.map((head) => head.toJson()).toList(),
       'traits': traits.map((trait) => trait.toJson()).toList(),
-      'myImage': myImage.toJson(name),
     };
   }
 
@@ -79,6 +75,8 @@ class House extends Equatable {
         commonRoom,
         heads,
         traits,
-        myImage,
+        image
       ];
+
+  String get imagePath => 'assets/images/houses/${name.toLowerCase()}_background.jpg';
 }

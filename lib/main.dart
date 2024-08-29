@@ -31,7 +31,7 @@ Future<void> main() async {
     BlocProvider(
       create: (context) => HousesCubit(
         housesRepository: HousesRepository(),
-      ),
+      )..fetchHouses(),
       child: const MyApp(),
     ),
   );

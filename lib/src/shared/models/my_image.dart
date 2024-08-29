@@ -16,9 +16,9 @@ class MyImage {
   }
 
   // toJson method
-  Map<String, dynamic> toJson([String? name]) {
+  Map<String, dynamic> toJson() {
     return {
-      'image': 'assets/images/houses/${name?.toLowerCase()}_background.jpg',
+      'image': image,
       'sourceName': sourceName,
     };
   }

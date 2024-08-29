@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import '../../../../shared/models/my_image.dart';
 
 class Spell {
@@ -9,7 +11,7 @@ class Spell {
   final String type;
   final String light;
   final String? creator;
-  final MyImage spellImage;
+  final MyImage? spellImage;
 
   Spell({
     required this.id,
@@ -33,7 +35,7 @@ class Spell {
       type: json['type'] as String,
       light: json['light'] as String,
       creator: json['creator'] as String?,
-      spellImage: MyImage.fromJson(json['spellImage'] as Map<String, dynamic>),
+      spellImage: MyImage?.fromJson(json['spellImage'] as Map<String, dynamic>),
     );
   }
 
@@ -47,7 +49,26 @@ class Spell {
       'type': type,
       'light': light,
       'creator': creator,
-      'spellImage': spellImage.toJson(),
+      'spellImage': spellImage?.toJson(),
     };
+  }
+
+  static List<String> images() {
+    return [
+      'assets/images/spells/spell1.png',
+      'assets/images/spells/spell2.png',
+      'assets/images/spells/spell3.png',
+      'assets/images/spells/spell4.png',
+      'assets/images/spells/spell5.png',
+      'assets/images/spells/spell6.png',
+      'assets/images/spells/spell7.png',
+      'assets/images/spells/spell8.png',
+      'assets/images/spells/spell9.png',
+      'assets/images/spells/spell10.png',
+    ];
+  }
+
+  String getSpellImage() {
+    return images()[Random().nextInt(images().length - 1)];
   }
 }

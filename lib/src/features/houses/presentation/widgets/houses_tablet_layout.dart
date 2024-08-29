@@ -22,7 +22,7 @@ class HousesMobileLayout extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         ClippedImage(
-          house.myImage.image,
+          house.imagePath,
           fit: BoxFit.cover,
         ),
         Expanded(

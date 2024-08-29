@@ -16,10 +16,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+
+
     return BlocBuilder<HousesCubit, HousesState>(
       builder: (BuildContext context, HousesState state) {
-        context.read<HousesCubit>().fetchHouses();
-
         return switch (state.status) {
           HousesStatus.loading => const Center(child: CircularProgressIndicator(),),
           HousesStatus.success => HomeScreenLayout(houses: state.houses),

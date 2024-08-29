@@ -16,10 +16,6 @@ void main() {
               'type': 'Charm',
               'light': 'Red',
               'creator': 'Unknown',
-              'spellImage': {
-                'image': 'expelliarmus.png',
-                'sourceName': 'Wizarding World',
-              },
             },
           ),
           isA<Spell>()
@@ -31,8 +27,6 @@ void main() {
               .having((s) => s.type, 'type', 'Charm')
               .having((s) => s.light, 'light', 'Red')
               .having((s) => s.creator, 'creator', 'Unknown')
-              .having((s) => s.spellImage.image, 'image', 'expelliarmus.png')
-              .having((s) => s.spellImage.sourceName, 'sourceName', 'Wizarding World'),
         );
       });
     });
