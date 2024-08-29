@@ -1,0 +1,69 @@
+import 'dart:math';
+
+class Spell {
+  final String id;
+  final String name;
+  final String? incantation;
+  final String effect;
+  final bool? canBeVerbal;
+  final String type;
+  final String light;
+  final String? creator;
+  final String? spellImage;
+
+  Spell({
+    required this.id,
+    required this.name,
+    this.incantation,
+    required this.effect,
+    this.canBeVerbal,
+    required this.type,
+    required this.light,
+    this.creator,
+    this.spellImage
+  });
+
+  factory Spell.fromJson(Map<String, dynamic> json) {
+    return Spell(
+      id: json['id'] as String,
+      name: json['name'] as String,
+      incantation: json['incantation'] as String?,
+      effect: json['effect'] as String,
+      canBeVerbal: json['canBeVerbal'] as bool?,
+      type: json['type'] as String,
+      light: json['light'] as String,
+      creator: json['creator'] as String?
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'incantation': incantation,
+      'effect': effect,
+      'canBeVerbal': canBeVerbal,
+      'type': type,
+      'light': light,
+      'creator': creator,
+    };
+  }
+
+  static List<String> _spellImages() {
+    return [
+      'assets/images/spells/spell1.png',
+      'assets/images/spells/spell2.png',
+      'assets/images/spells/spell3.png',
+      'assets/images/spells/spell4.png',
+      'assets/images/spells/spell5.png',
+      'assets/images/spells/spell6.png',
+      'assets/images/spells/spell7.png',
+      'assets/images/spells/spell8.png',
+      'assets/images/spells/spell9.png',
+      'assets/images/spells/spell10.png',
+    ];
+  }
+
+  String get image => _spellImages()[Random().nextInt(_spellImages().length - 1)];
+
+}
