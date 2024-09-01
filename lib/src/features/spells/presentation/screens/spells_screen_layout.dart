@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hyperboliq/src/features/elixirs/presentation/screens/elixir_screen.dart';
+import 'package:hyperboliq/src/shared/extensions.dart';
 
 import '../../../../shared/app_strings.dart';
 import '../../../../shared/widgets/image_tile.dart';
@@ -79,7 +81,7 @@ class SpellScreenLayout extends StatelessWidget {
                     if (pattern.isEmpty) {
                       return [];
                     }
-                    return await searchSpells(pattern);
+                    return await searchSpells(pattern.capitalize());
                   },
                   itemBuilder: (context, Spell suggestion) {
                     return ListTile(
