@@ -20,7 +20,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    //Use your bloc provider here
     return DynamicColorBuilder(
       builder: (lightDynamic, darkDynamic) => ThemeProvider(
           lightDynamic: lightDynamic,
