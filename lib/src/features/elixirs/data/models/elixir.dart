@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'ingredient.dart'; // Ensure this is the correct path to the Ingredient class
-import 'inventor.dart'; // Ensure this is the correct path to the Inventor class
+import 'ingredient.dart';
+import 'inventor.dart';
 
 class Elixir extends Equatable {
   final String id;
